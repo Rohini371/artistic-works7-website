@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Sitemap: https://artisticworks7.com/sitemap.xml
