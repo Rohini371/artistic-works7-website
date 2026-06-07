@@ -176,7 +176,8 @@ const setNavbarHeroTransparentMode = () => {
 
 setNavbarHeroTransparentMode();
 
-window.addEventListener('scroll', () => {
+const updateNavbarScrollState = () => {
+    if (!navbar) return;
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     const isHeroTransparentMode = navbar?.classList.contains('navbar--hero-transparent');
@@ -191,7 +192,10 @@ window.addEventListener('scroll', () => {
     }
 
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-});
+};
+
+updateNavbarScrollState();
+window.addEventListener('scroll', updateNavbarScrollState);
 
 
 
@@ -816,6 +820,16 @@ function initCategoryFilter() {
 
     if (!filterGroups.length) return;
 
+    const initialWorkshopCategory = (() => {
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get('category');
+        const aliases = {
+            kids: 'kids-art',
+            'kids-art': 'kids-art'
+        };
+        return aliases[category] || category;
+    })();
+
     filterGroups.forEach(group => {
         const buttons = group.querySelectorAll('.category-btn');
         buttons.forEach(btn => {
@@ -837,6 +851,18 @@ function initCategoryFilter() {
         });
     });
 
+    if (initialWorkshopCategory) {
+        const categoryButtons = document.querySelectorAll('[data-filter-group="workshop-category"] .category-btn');
+        const categoryButton = Array.from(categoryButtons).find(button => button.getAttribute('data-filter') === initialWorkshopCategory);
+        if (categoryButton) {
+            const categoryGroup = categoryButton.closest('[data-filter-group]');
+            categoryGroup.querySelectorAll('.category-btn').forEach(button => button.classList.remove('active'));
+            categoryButton.classList.add('active');
+            applyWorkshopFilters();
+            return;
+        }
+    }
+
     updateWorkshopEmptyState();
     updateWorkshopExploreLocationButton();
 }
@@ -846,6 +872,7 @@ const initSmartWhatsAppLinks = () => {
     // Find and attach listeners to all WhatsApp links
     document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
         link.addEventListener('click', async (e) => {
+            if (link.hasAttribute('data-direct-whatsapp')) return;
             e.preventDefault();
             const pageContext = extractPageContextFromElement(link);
             const message = buildSmartMessage(pageContext);
