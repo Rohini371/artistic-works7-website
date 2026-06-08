@@ -1,0 +1,139 @@
+/* Community Moments - premium fullscreen image preview (lightbox)
+   NOTE: Scoped by .community-moments-* classes so it won't affect other sections.
+*/
+
+.community-moments-lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  background: rgba(16, 12, 10, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 260ms ease;
+}
+
+.community-moments-lightbox-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.community-moments-lightbox-overlay.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.community-moments-lightbox-box {
+  width: min(1200px, 92vw);
+  height: min(820px, 88vh);
+
+  position: relative;
+  border-radius: 22px;
+  background: rgba(255, 248, 240, 0.02);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(10px) scale(0.98);
+  transition: transform 280ms ease;
+}
+
+.community-moments-lightbox-overlay.is-open .community-moments-lightbox-box {
+  transform: translateY(0) scale(1);
+}
+
+.community-moments-lightbox-figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.community-moments-lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+
+  display: block;
+  border-radius: 18px;
+
+  /* premium subtle frame */
+  box-shadow: 0 32px 88px rgba(0,0,0,0.35);
+
+  object-fit: contain; /* show FULL image nicely */
+  transform: scale(0.985);
+  opacity: 0;
+  transition: opacity 220ms ease, transform 320ms ease;
+}
+
+.community-moments-lightbox-overlay.is-open .community-moments-lightbox-img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.community-moments-lightbox-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+
+  box-shadow: 0 18px 46px rgba(0,0,0,0.25);
+
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.community-moments-lightbox-close:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.community-moments-lightbox-lock {
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .community-moments-lightbox-box {
+    width: 92vw;
+    height: 84vh;
+    border-radius: 18px;
+  }
+
+  .community-moments-lightbox-close {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .community-moments-lightbox-img {
+    border-radius: 14px;
+  }
+}
+

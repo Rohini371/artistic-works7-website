@@ -1193,3 +1193,79 @@ initSlider({
     next: '.next-gift',
     prev: '.prev-gift'
 });
+
+
+// ================================
+// COMMUNITY MOMENTS - PREMIUM LIGHTBOX
+// Click anywhere on card to open image
+// ================================
+
+(() => {
+    const cards = document.querySelectorAll(
+        '#community-moments .community-moment-card'
+    );
+
+    if (!cards.length) return;
+
+    // Create popup
+    const overlay = document.createElement('div');
+    overlay.className = 'community-moments-lightbox-overlay';
+
+    overlay.innerHTML = `
+        <div class="community-moments-lightbox-box">
+            <button class="community-moments-lightbox-close" aria-label="Close">
+                &times;
+            </button>
+
+            <figure class="community-moments-lightbox-figure">
+                <img class="community-moments-lightbox-img" src="" alt="">
+            </figure>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const popupImage = overlay.querySelector(
+        '.community-moments-lightbox-img'
+    );
+
+    const closeBtn = overlay.querySelector(
+        '.community-moments-lightbox-close'
+    );
+
+    // Open popup
+    cards.forEach(card => {
+        card.style.cursor = 'zoom-in';
+
+        card.addEventListener('click', () => {
+            const img = card.querySelector('img');
+            if (!img) return;
+
+            popupImage.src = img.src;
+            popupImage.alt = img.alt || '';
+
+            overlay.classList.add('is-open');
+            document.body.classList.add('community-moments-lightbox-lock');
+        });
+    });
+
+    // Close popup
+    function closePopup() {
+        overlay.classList.remove('is-open');
+        document.body.classList.remove('community-moments-lightbox-lock');
+    }
+
+    closeBtn.addEventListener('click', closePopup);
+
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            closePopup();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closePopup();
+        }
+    });
+})();
