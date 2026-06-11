@@ -267,8 +267,8 @@ const getCardContext = (element) => {
     const selection = title || categoryTag || '';
     const rawCategory = card.dataset.category || categoryTag || '';
     const category = normalizeCategoryLabel(rawCategory);
-    const location = card.dataset.location
-        ? card.dataset.location.split(' ').filter(Boolean).map(l => l.charAt(0).toUpperCase() + l.slice(1)).shift()
+    const location = card.dataset.workshopLocation
+        ? card.dataset.workshopLocation.split(' ').filter(Boolean).map(l => l.charAt(0).toUpperCase() + l.slice(1)).shift()
         : card.querySelector('.card-meta-row span:last-child')?.textContent.trim() || '';
     const price = card.querySelector('.pricing-badge')?.textContent.trim() || extractPriceFromText(card.textContent);
     const budget = category.includes('Rs.') ? category : '';
@@ -684,7 +684,16 @@ function initCategoryFilter() {
             await saveLeadAndOpenWhatsApp(payload, message);
             form.dataset.submitted = 'true';
             showFormStatus(form, 'Enquiry saved. Opening WhatsApp...');
-            setTimeout(closePremiumModal, 300);
+
+            setTimeout(() => {
+            closePremiumModal();
+
+            form.reset();
+
+            // IMPORTANT: allow future submissions
+        form.dataset.submitted = 'false';
+
+            }, 700);
         } catch (error) {
             showFormStatus(form, 'Unable to save lead. Please try again.', true);
         } finally {
@@ -1268,4 +1277,374 @@ initSlider({
             closePopup();
         }
     });
+    
 })();
+
+// ==========================
+// WORKSHOP VIDEO REELS
+// FIXED CIRCULAR VERSION
+// ==========================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const reelsTrack =
+        document.querySelector('.reels-track');
+
+    const reelCards =
+        [...document.querySelectorAll('.reel-card')];
+
+    const modal =
+        document.getElementById('videoModal');
+
+    const modalVideo =
+        document.getElementById('modalVideo');
+
+    const closeBtn =
+        document.querySelector('.close-video');
+
+    const muteBtn =
+        document.querySelector('.mute-btn');
+
+    if (!reelsTrack || !reelCards.length) return;
+
+    const total = reelCards.length;
+
+   let activeIndex =
+    Math.floor(total / 2);
+
+    let startX = 0;
+    let startY = 0;
+
+    let currentX = 0;
+    let isDragging = false;
+    let dragged = false;
+
+
+    // ==========================
+    // POSITION CARDS
+    // ==========================
+
+    function updateCarousel() {
+
+        reelCards.forEach((card, index) => {
+
+            card.className = 'reel-card';
+
+            const video =
+                card.querySelector('video');
+
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
+
+            // TRUE circular distance
+            let diff =
+                (index - activeIndex + total)
+                % total;
+
+            if (diff > total / 2) {
+                diff -= total;
+            }
+
+            switch (diff) {
+
+                case 0:
+                    card.classList.add('center');
+
+                    if (video) {
+                        video.muted = true;
+
+                        video.play()
+                        .catch(() => {});
+                    }
+                    break;
+
+                case -1:
+                    card.classList.add('left-1');
+                    break;
+
+                case -2:
+                    card.classList.add('left-2');
+                    break;
+
+                case 1:
+                    card.classList.add('right-1');
+                    break;
+
+                case 2:
+                    card.classList.add('right-2');
+                    break;
+
+                default:
+                    card.classList.add('hidden');
+            }
+        });
+    }
+
+    updateCarousel();
+
+    // ==========================
+    // MOVE CAROUSEL
+    // ==========================
+
+    function moveCarousel(direction, steps) {
+
+        activeIndex =
+            (
+                activeIndex +
+                direction * steps +
+                total
+            ) % total;
+
+        updateCarousel();
+    }
+
+    // ==========================
+    // DRAG START
+    // ==========================
+
+    reelsTrack.addEventListener(
+        'mousedown',
+        (e) => {
+
+        isDragging = true;
+        dragged = false;
+
+        startX = e.clientX;
+        startY = e.clientY;
+
+        reelsTrack.style.cursor =
+            'grabbing';
+    });
+
+    // ==========================
+    // DRAGGING
+    // ==========================
+
+    window.addEventListener(
+        'mousemove',
+        (e) => {
+
+        if (!isDragging) return;
+
+        currentX =
+            e.clientX - startX;
+
+        const currentY =
+            e.clientY - startY;
+
+        // ignore vertical drag
+        if (
+            Math.abs(currentY)
+            >
+            Math.abs(currentX)
+        ) return;
+
+        dragged = true;
+    });
+
+    // ==========================
+    // DRAG END
+    // ==========================
+
+    window.addEventListener(
+        'mouseup',
+        () => {
+
+        if (!isDragging) return;
+
+        isDragging = false;
+
+        reelsTrack.style.cursor =
+            'grab';
+
+        const absX =
+            Math.abs(currentX);
+
+        if (absX < 50) return;
+
+        let steps = 1;
+
+        if (absX >= 400) {
+            steps = 3;
+        }
+
+        else if (absX >= 250) {
+            steps = 2;
+        }
+
+        else {
+            steps = 1;
+        }
+
+        // LEFT DRAG
+        if (currentX < 0) {
+
+            moveCarousel(
+                1,
+                steps
+            );
+        }
+
+        // RIGHT DRAG
+        else {
+
+            moveCarousel(
+                -1,
+                steps
+            );
+        }
+
+        currentX = 0;
+    });
+
+    // ==========================
+    // CLICK CARDS
+    // ==========================
+
+    reelCards.forEach(
+        (card, index) => {
+
+        card.addEventListener(
+            'click',
+            () => {
+
+            // prevent click after drag
+            if (dragged) {
+                dragged = false;
+                return;
+            }
+
+            // side → center
+            if (
+                index !== activeIndex
+            ) {
+
+                activeIndex =
+                    index;
+
+                updateCarousel();
+
+                return;
+            }
+
+            // center → popup
+            const source =
+                card.querySelector(
+                    'source'
+                );
+
+            if (!source) return;
+
+            modal.classList.add(
+                'show'
+            );
+
+            modalVideo.src =
+                source.src;
+
+            modalVideo.currentTime = 0;
+            modalVideo.muted = false;
+
+            modalVideo.play()
+            .catch(() => {});
+        });
+    });
+
+    // ==========================
+    // CLOSE MODAL
+    // ==========================
+
+    function closeModal() {
+
+        modal.classList.remove(
+            'show'
+        );
+
+        modalVideo.pause();
+
+        modalVideo.currentTime = 0;
+
+        modalVideo.src = '';
+    }
+
+    closeBtn?.addEventListener(
+        'click',
+        closeModal
+    );
+
+    modal?.addEventListener(
+        'click',
+        (e) => {
+
+        if (
+            e.target === modal
+        ) {
+            closeModal();
+        }
+    });
+
+    // ==========================
+    // MUTE BUTTON
+    // ==========================
+
+    muteBtn?.addEventListener(
+        'click',
+        () => {
+
+        modalVideo.muted =
+            !modalVideo.muted;
+
+        muteBtn.innerText =
+            modalVideo.muted
+            ? '🔇'
+            : '🔊';
+    });
+
+});
+
+// ==========================
+// FLOATING REQUEST BUTTON
+// SHOW ONLY AFTER SCROLL
+// ==========================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const floatingBtn =
+        document.querySelector(
+            '.floating-request-btn'
+        );
+
+    if (!floatingBtn) return;
+
+    function toggleFloatingButton() {
+
+        const scrollY =
+            window.scrollY ||
+            window.pageYOffset;
+
+        // show after hero section
+        if (scrollY > 600) {
+
+            floatingBtn.classList.add(
+                'show'
+            );
+
+        } else {
+
+            floatingBtn.classList.remove(
+                'show'
+            );
+        }
+    }
+
+    // run on load
+    toggleFloatingButton();
+
+    // run while scrolling
+    window.addEventListener(
+        'scroll',
+        toggleFloatingButton
+    );
+});

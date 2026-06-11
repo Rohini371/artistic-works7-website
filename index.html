@@ -15,8 +15,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Borel&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Borel&family=Metamorphous&family=Mozilla+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Mozilla+Text:wght@200..700&family=Cause:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/community-moments-lightbox.css">
     <!-- Add Google Search Console verification meta tag when ready -->
     <!-- Example: <meta name="google-site-verification" content="your-code-here"> -->
@@ -295,6 +296,77 @@ WhatsApp
         </div>
     </section>
 
+<section class="workshop-reels-section">
+
+    <div class="reels-track">
+
+        <div class="reel-card">
+            <video muted loop playsinline preload="metadata">
+                <source src="./images/vedios/clip_1.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="reel-card">
+            <video muted loop playsinline preload="metadata">
+                <source src="./images/vedios/clip_2.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="reel-card active">
+            <video muted loop playsinline preload="metadata">
+                <source src="./images/vedios/clip_3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="reel-card">
+            <video muted loop playsinline preload="metadata">
+                <source src="./images/vedios/clip_4.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="reel-card">
+            <video muted loop playsinline preload="metadata">
+                <source src="./images/vedios/clip_5.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="reel-card">
+            <video muted loop playsinline preload="metadata">
+                <source src="./images/vedios/clip_6.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="reel-card">
+            <video muted loop playsinline preload="metadata">
+                <source src="./images/vedios/clip_7.mp4" type="video/mp4">
+            </video>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VIDEO POPUP -->
+
+<div class="video-modal" id="videoModal">
+
+    <button class="close-video">
+        ✕
+    </button>
+
+    <button class="mute-btn">
+        🔊
+    </button>
+
+    <video
+        id="modalVideo"
+        controls
+        playsinline
+    ></video>
+
+</div>
+
     <!-- ================================
          FEATURED EXPERIENCES SECTION
          ================================ -->
@@ -308,7 +380,7 @@ WhatsApp
             <div class="featured-grid">
                 <article class="featured-card" data-workshop="terracotta-pot-painting">
                     <div class="featured-card-image">
-                        <img loading="lazy" src="./images/workshops/terracotta-workshop.jpg" alt="Terracotta Pot Painting">
+                        <img loading="lazy" src="images\workshops\images (14).jpg" alt="Terracotta Pot Painting">
                     </div>
                     <div class="featured-card-content">
                         <h3 class="featured-card-title">Terracotta Pot Painting</h3>
@@ -318,7 +390,7 @@ WhatsApp
                         </div>
                         <p class="featured-card-description">Paint and personalize terracotta pieces with premium glazes and guided support.</p>
                         <div class="featured-card-footer">
-                            <div class="featured-card-pricing">₹1,799</div>
+                            <div class="featured-card-pricing">Starts from ₹699</div>
                             <a href="workshops.html" class="btn btn-secondary book-now-btn">Book Now</a>
                         </div>
                     </div>
@@ -336,7 +408,7 @@ WhatsApp
                         </div>
                         <p class="featured-card-description">Add elegant live art to your wedding for a truly memorable celebration.</p>
                         <div class="featured-card-footer">
-                            <div class="featured-card-pricing">₹4,499</div>
+                            <div class="featured-card-pricing">Starts from ₹15,499</div>
                             <a href="workshops.html" class="btn btn-secondary book-now-btn">Book Now</a>
                         </div>
                     </div>
@@ -354,7 +426,7 @@ WhatsApp
                         </div>
                         <p class="featured-card-description">A gentle online session for new creatives to explore art from home.</p>
                         <div class="featured-card-footer">
-                            <div class="featured-card-pricing">₹799</div>
+                            <div class="featured-card-pricing">Starts from ₹799</div>
                             <a href="workshops.html" class="btn btn-secondary book-now-btn">Book Now</a>
                         </div>
                     </div>
@@ -372,7 +444,7 @@ WhatsApp
                         </div>
                         <p class="featured-card-description">Creative team-building sessions designed to bring calm, connection and fresh inspiration.</p>
                         <div class="featured-card-footer">
-                            <div class="featured-card-pricing">₹2,499</div>
+                            <div class="featured-card-pricing">Starts from ₹2,499</div>
                             <a href="workshops.html" class="btn btn-secondary book-now-btn">Book Now</a>
                         </div>
                     </div>
@@ -490,8 +562,8 @@ WhatsApp
     <section class="location-section" id="locations">
         <div class="section-container">
             <div class="section-header">
-                <h2 class="section-title">Creative Experiences Across Bangalore</h2>
-                <p class="section-subtitle">Find workshops near your neighborhood</p>
+                <h2 class="section-title">Artistic Experiences Across Bangalore</h2>
+                <p class="section-subtitle"> We host thoughtful workshops in cafes, parks, boutique venues and community spaces across Bangalore.</p>
             </div>
 
             <div class="location-tags" aria-label="Workshop categories">
@@ -507,12 +579,12 @@ WhatsApp
 
                 <article class="location-card" onclick="window.location.href='locations/yeshwanthpur.html'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'){window.location.href='locations/yeshwanthpur.html'}">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/painting-workshop.jpeg" alt="Yeshwanthpur creative workshops">
+                        <img loading="lazy" src="images\workshops\card_1.jpg" alt="Yeshwanthpur creative workshops">
                     </div>
                     <div class="location-card-content">
                         <h3>Yeshwanthpur</h3>
                         <p class="location-types">Painting • Crochet • Terracotta</p>
-                        <p class="location-sessions">11 sessions this month</p>
+                        <p class="location-sessions">5 sessions this month</p>
                         <a href="locations/yeshwanthpur.html" class="btn btn-secondary btn-small">Explore Area →</a>
                     </div>
                 </article>
@@ -520,84 +592,84 @@ WhatsApp
 
                 <article class="location-card" onclick="window.location.href='locations/rajajinagar.html'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'){window.location.href='locations/rajajinagar.html'}">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/kids-art.jpg" alt="Rajajinagar creative workshops">
+                        <img loading="lazy" src="images\workshops\card_2.jpg" alt="Rajajinagar creative workshops">
                     </div>
                     <div class="location-card-content">
                         <h3>Rajajinagar</h3>
                         <p class="location-types">Kids Art • Painting • Terracotta</p>
-                        <p class="location-sessions">12 sessions this month</p>
+                        <p class="location-sessions">2 sessions this month</p>
                         <a href="locations/rajajinagar.html" class="btn btn-secondary btn-small">Explore Area →</a>
                     </div>
                 </article>
 
                 <article class="location-card" onclick="window.location.href='locations/malleshwaram.html'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'){window.location.href='locations/malleshwaram.html'}">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/terracotta-workshop.jpg" alt="Malleshwaram creative workshops">
+                        <img loading="lazy" src="images\workshops\card_3.jpg" alt="Malleshwaram creative workshops">
                     </div>
                     <div class="location-card-content">
                         <h3>Malleshwaram</h3>
                         <p class="location-types">Terracotta • Painting • Weekend</p>
-                        <p class="location-sessions">9 sessions this month</p>
+                        <p class="location-sessions">3 sessions this month</p>
                         <a href="locations/malleshwaram.html" class="btn btn-secondary btn-small">Explore Area →</a>
                     </div>
                 </article>
 
                 <article class="location-card" onclick="window.location.href='locations/cubbon-park.html'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'){window.location.href='locations/cubbon-park.html'}">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/corporate-workshop.jpeg" alt="Cubbon Park creative workshops">
+                        <img loading="lazy" src="images\workshops\card_4.jpg" alt="Cubbon Park creative workshops">
                     </div>
                     <div class="location-card-content">
                         <h3>Cubbon Park</h3>
                         <p class="location-types">Painting • Corporate Wellness • Weekend</p>
-                        <p class="location-sessions">10 sessions this month</p>
+                        <p class="location-sessions">7 sessions this month</p>
                         <a href="locations/cubbon-park.html" class="btn btn-secondary btn-small">Explore Area →</a>
                     </div>
                 </article>
 
                 <article class="location-card" onclick="window.location.href='locations/whitefield.html'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'){window.location.href='locations/whitefield.html'}">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/online-workshop.jpg" alt="Whitefield creative workshops">
+                        <img loading="lazy" src="images\workshops\card_5.jpg" alt="Whitefield creative workshops">
                     </div>
                     <div class="location-card-content">
                         <h3>Whitefield</h3>
                         <p class="location-types">Online • Painting • Kids</p>
-                        <p class="location-sessions">14 sessions this month</p>
+                        <p class="location-sessions">1 sessions this month</p>
                         <a href="locations/whitefield.html" class="btn btn-secondary btn-small">Explore Area →</a>
                     </div>
                 </article>
 
                 <article class="location-card" onclick="window.location.href='locations/jayanagar.html'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'){window.location.href='locations/jayanagar.html'}">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/wedding-painting.jpg" alt="Jayanagar creative workshops">
+                        <img loading="lazy" src="images\workshops\card_6.jpg" alt="Jayanagar creative workshops">
                     </div>
                     <div class="location-card-content">
                         <h3>Jayanagar</h3>
                         <p class="location-types">Painting • Wedding Live Painting</p>
-                        <p class="location-sessions">8 sessions this month</p>
+                        <p class="location-sessions">3 sessions this month</p>
                         <a href="locations/jayanagar.html" class="btn btn-secondary btn-small">Explore Area →</a>
                     </div>
                 </article>
 
                 <article class="location-card" onclick="window.location.href='locations/hsr-layout.html'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'){window.location.href='locations/hsr-layout.html'}">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/crochet-workshop.jpg" alt="HSR Layout creative workshops">
+                        <img loading="lazy" src="images\workshops\card_7.jpg" alt="HSR Layout creative workshops">
                     </div>
                     <div class="location-card-content">
                         <h3>HSR Layout</h3>
                         <p class="location-types">Crochet • Kids Art • Weekend</p>
-                        <p class="location-sessions">13 sessions this month</p>
+                        <p class="location-sessions">2 sessions this month</p>
                         <a href="locations/hsr-layout.html" class="btn btn-secondary btn-small">Explore Area →</a>
                     </div>
                 </article>
 
                 <article class="location-card" onclick="window.location.href='locations/indiranagar.html'" role="link" tabindex="0" onkeydown="if(event.key==='Enter'){window.location.href='locations/indiranagar.html'}">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/painting-workshop.jpeg" alt="Indiranagar creative workshops">
+                        <img loading="lazy" src="images\workshops\card_8.jpg" alt="Indiranagar creative workshops">
                     </div>
                     <div class="location-card-content">
                         <h3>Indiranagar</h3>
                         <p class="location-types">Painting • Crochet • Terracotta</p>
-                        <p class="location-sessions">15 sessions this month</p>
+                        <p class="location-sessions">6 sessions this month</p>
                         <a href="locations/indiranagar.html" class="btn btn-secondary btn-small">Explore Area →</a>
                     </div>
                 </article>
@@ -614,7 +686,7 @@ WhatsApp
     <section class="why-choose-section" id="why-choose">
         <div class="section-container">
             <div class="section-header">
-                <h2 class="section-title">Why Choose AW7</h2>
+                <h2 class="section-title">Why Choose Us</h2>
                 <p class="section-subtitle">Premium craft, thoughtful guidance, and beautifully held creative space.</p>
             </div>
 
@@ -710,7 +782,7 @@ WhatsApp
             <div class="collection-grid">
                 <article class="collection-card">
                     <div class="card-image-container">
-                        <img loading="lazy" src="./images/workshops/terracotta-workshop.jpg" alt="Terracotta creations">
+                        <img loading="lazy" src="images\workshops\images (12).jpg" alt="Terracotta creations">
                     </div>
                     <h3>Terracotta Creations</h3>
                     <p>Earthy clay pieces shaped with care, perfect for gifting and decor.</p>
@@ -728,7 +800,7 @@ WhatsApp
 
                 <article class="collection-card">
                     <div class="card-image-container">
-                        <div class="image-placeholder" style="background: linear-gradient(135deg, #f8f1ea 0%, #ede3d9 100%);"></div>
+                        <img loading="lazy" src="images\workshops\image (4).jpeg" alt="Handmade paintings by Artistic Works 7 Bangalore">
                     </div>
                     <h3>Crochet & Giftware</h3>
                     <p>Thoughtful handmade creations designed to feel personal and polished.</p>
@@ -737,7 +809,7 @@ WhatsApp
 
                 <article class="collection-card">
                     <div class="card-image-container">
-                        <div class="image-placeholder" style="background: linear-gradient(135deg, #f6efe6 0%, #e8dbd1 100%);"></div>
+                        <img loading="lazy" src="images\workshops\images.jpg" alt="Handmade paintings by Artistic Works 7 Bangalore">
                     </div>
                     <h3>Customized Artworks</h3>
                     <p>Commission meaningful custom pieces tailored to your story and space.</p>
@@ -784,7 +856,7 @@ WhatsApp
                 </article>
 
                 <article class="community-moment-card">
-                    <img loading="lazy" src="./images/workshops/crochet-workshop.jpg" alt="Crochet community gathering">
+                    <img loading="lazy" src="images\workshops\images (8).jpeg" alt="Crochet community gathering">
                     <div class="community-moment-overlay">
                         <p>Crochet</p>
                         <h3>Slow craft and shared inspiration</h3>
@@ -800,7 +872,7 @@ WhatsApp
                 </article>
 
                 <article class="community-moment-card">
-                    <img loading="lazy" src="./images/shop/paintings.jpg" alt="Finished student artwork">
+                    <img loading="lazy" src="images\workshops\card_9.jpeg" alt="Finished student artwork">
                     <div class="community-moment-overlay">
                         <p>Student Showcase</p>
                         <h3>Artwork shared by our creative circle</h3>
@@ -870,7 +942,7 @@ WhatsApp
                     </div>
                 </article>
                 <article class="spotlight-card">
-                    <img loading="lazy" src="./images/workshops/terracotta-workshop.jpg" alt="Student terracotta artwork">
+                    <img loading="lazy" src="images\workshops\images (12).jpeg" alt="Student terracotta artwork">
                     <div class="spotlight-copy">
                         <h3>Terracotta Keepsake</h3>
                         <p>By Sahana • Terracotta</p>
@@ -884,10 +956,10 @@ WhatsApp
                     </div>
                 </article>
                 <article class="spotlight-card">
-                    <img loading="lazy" src="./images/workshops/online-workshop.jpg" alt="Student online workshop artwork">
+                    <img loading="lazy" src="images\workshops\online-workshop.jpg" alt="Student online workshop artwork">
                     <div class="spotlight-copy">
                         <h3>Online Sketch Study</h3>
-                        <p>By Nidhi • Online Workshop</p>
+                        <p>By Ayesha • Online Workshop</p>
                     </div>
                 </article>
             </div>
@@ -902,11 +974,11 @@ WhatsApp
                     <p class="section-subtitle">Build your practice, share your art, and grow with a warm creative community.</p>
 
                     <ul class="community-benefits">
-                        <li>🎨 Weekly Challenges</li>
-                        <li>📸 Share Artwork</li>
-                        <li>💬 Creative Support</li>
-                        <li>🎁 Early Workshop Access</li>
-                        <li>✨ Member Spotlights</li>
+                        <li> Weekly Challenges</li>
+                        <li> Share Artwork</li>
+                        <li> Creative Support</li>
+                        <li> Early Workshop Access</li>
+                        <li> Member Spotlights</li>
                     </ul>
 
                     <div class="challenge-actions">
@@ -965,7 +1037,7 @@ WhatsApp
                     <li>Phone: <a href="tel:+919449237357">+91 9449237357</a></li>
                     <li>WhatsApp: <a href="https://wa.me/919449237357" target="_blank" rel="noopener noreferrer">Chat with us</a></li>
                     <li>Email: <a href="mailto:artisticworks37@gmail.com">artisticworks37@gmail.com</a></li>
-                    <li>Locations: Bangalore (Koramangala, Indiranagar)</li>
+                    <li>Locations: Multiple locations across Bangalore including Indiranagar, Whitefield, Cubbon Park & more</li>
                 </ul>
 
                 <div class="footer-social-row" aria-label="Follow Artistic Works 7">
@@ -1075,3 +1147,4 @@ WhatsApp
     <!-- Community Moments premium lightbox (scoped) -->
 </body>
 </html>
+

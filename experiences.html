@@ -15,6 +15,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Borel&family=Metamorphous&family=Mozilla+Text:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&family=Mozilla+Text:wght@200..700&family=Cause:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amarante&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <!-- Add Google Search Console verification meta tag when ready -->
     <!-- Example: <meta name="google-site-verification" content="your-code-here"> -->
@@ -208,85 +211,235 @@
     </section>
 
     <section class="events-section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">All Experiences</h2>
-                <p class="section-subtitle">A refined selection of our best event-style workshops and special moments.</p>
-            </div>
+    <div class="section-container">
 
-            <div class="section-header compact-section-header">
-                <h2 class="section-title">Explore By Occasion</h2>
-                <p class="section-subtitle">Find the right creative format for your gathering.</p>
-            </div>
-
-            <div class="category-filter" data-filter-group="experiences">
-                <button class="category-btn active" data-filter="all">All</button>
-                <button class="category-btn" data-filter="birthday">Birthday</button>
-                <button class="category-btn" data-filter="corporate">Corporate</button>
-                <button class="category-btn" data-filter="kids">Kids</button>
-                <button class="category-btn" data-filter="wedding">Wedding</button>
-                <button class="category-btn" data-filter="weekend">Weekend</button>
-                <button class="category-btn" data-filter="private">Private</button>
-            </div>
-
-            <div class="events-grid">
-                <div class="experience-card" data-filter-card data-category="birthday kids weekend">
-                    <div class="exp-image"><img loading="lazy" src="images/experiences/birthday.jpeg" alt="Birthday art experience"></div>
-                    <div class="exp-body">
-                        <h3>Birthday Art Experience</h3>
-                        <p>Playful guided sessions for memorable celebrations.</p>
-                        <div class="card-meta-row"><span>2 hrs</span><span>Bangalore</span><span>Beginner</span></div>
-                        <a class="exp-link" href="contact.html">Explore Experience →</a>
-                    </div>
-                </div>
-                <div class="experience-card" data-filter-card data-category="wedding weekend">
-                    <div class="exp-image"><img loading="lazy" src="images/experiences/wedding-live.jpg" alt="Wedding live painting experience"></div>
-                    <div class="exp-body">
-                        <h3>Wedding Live Painting</h3>
-                        <p>Elegant live-art to make your day uniquely artistic.</p>
-                        <div class="card-meta-row"><span>3-5 hrs</span><span>Venue</span><span>Beginner</span></div>
-                        <a class="exp-link" href="contact.html">Explore Experience →</a>
-                    </div>
-                </div>
-                <div class="experience-card" data-filter-card data-category="corporate private">
-                    <div class="exp-image"><img loading="lazy" src="images/experiences/corporate.jpeg" alt="Corporate wellness workshop"></div>
-                    <div class="exp-body">
-                        <h3>Corporate Wellness Workshop</h3>
-                        <p>Team-building through mindful creative exercises.</p>
-                        <div class="card-meta-row"><span>2.5 hrs</span><span>Office/Studio</span><span>Beginner</span></div>
-                        <a class="exp-link" href="contact.html">Explore Experience →</a>
-                    </div>
-                </div>
-                <div class="experience-card" data-filter-card data-category="kids birthday weekend">
-                    <div class="exp-image"><img loading="lazy" src="images/experiences/kids.jpg" alt="Kids art event"></div>
-                    <div class="exp-body">
-                        <h3>Kids Art Events</h3>
-                        <p>Hands-on, safe, and joyful art classes for children.</p>
-                        <div class="card-meta-row"><span>90 mins</span><span>Studio/Home</span><span>Beginner</span></div>
-                        <a class="exp-link" href="contact.html">Explore Experience →</a>
-                    </div>
-                </div>
-                <div class="experience-card" data-filter-card data-category="private weekend">
-                    <div class="exp-image"><img loading="lazy" src="images/experiences/couple.jpg" alt="Couple creative session"></div>
-                    <div class="exp-body">
-                        <h3>Couple Creative Session</h3>
-                        <p>Shared creative sessions to connect and create together.</p>
-                        <div class="card-meta-row"><span>2 hrs</span><span>Studio</span><span>Beginner</span></div>
-                        <a class="exp-link" href="contact.html">Explore Experience →</a>
-                    </div>
-                </div>
-                <div class="experience-card" data-filter-card data-category="private weekend corporate">
-                    <div class="exp-image"><img loading="lazy" src="images/experiences/private.jpeg" alt="Private group workshop"></div>
-                    <div class="exp-body">
-                        <h3>Private Group Workshop</h3>
-                        <p>Bespoke sessions crafted to your group's interests.</p>
-                        <div class="card-meta-row"><span>2-3 hrs</span><span>Studio/Venue</span><span>Beginner</span></div>
-                        <a class="exp-link" href="contact.html">Explore Experience →</a>
-                    </div>
-                </div>
-            </div>
+        <div class="section-header">
+            <h2 class="section-title">All Experiences</h2>
+            <p class="section-subtitle">
+                A refined selection of our best event-style workshops and special moments.
+            </p>
         </div>
-    </section>
+
+        <div class="section-header compact-section-header">
+            <h2 class="section-title">Explore By Occasion</h2>
+            <p class="section-subtitle">
+                Find the right creative format for your gathering.
+            </p>
+        </div>
+
+        <div class="category-filter" data-filter-group="experiences">
+            <button class="category-btn active" data-filter="all">All</button>
+            <button class="category-btn" data-filter="birthday">Birthday</button>
+            <button class="category-btn" data-filter="corporate">Corporate</button>
+            <button class="category-btn" data-filter="kids">Kids</button>
+            <button class="category-btn" data-filter="wedding">Wedding</button>
+            <button class="category-btn" data-filter="weekend">Weekend</button>
+            <button class="category-btn" data-filter="private">Private</button>
+        </div>
+
+        <div class="events-grid">
+
+            <!-- Card 1 -->
+            <div class="experience-card exp-card-luxury"
+                 data-filter-card
+                 data-category="birthday kids weekend">
+
+                <div class="exp-image exp-image-luxury">
+                    <img loading="lazy"
+                         src="images/experiences/birthday.jpeg"
+                         alt="Birthday art experience">
+                </div>
+
+                <div class="exp-body exp-body-luxury">
+                    <h3 class="exp-title">
+                        Birthday Art Experience
+                    </h3>
+
+                    <p class="exp-description">
+                        Playful guided sessions for memorable celebrations.
+                    </p>
+
+                    <div class="card-meta-row exp-meta-row">
+                        <span>2 hrs</span>
+                        <span>Bangalore</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <a class="exp-link exp-link-luxury"
+                       href="contact.html">
+                        Explore Experience →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="experience-card exp-card-luxury"
+                 data-filter-card
+                 data-category="wedding weekend">
+
+                <div class="exp-image exp-image-luxury">
+                    <img loading="lazy"
+                         src="images/experiences/wedding-live.jpg"
+                         alt="Wedding live painting experience">
+                </div>
+
+                <div class="exp-body exp-body-luxury">
+                    <h3 class="exp-title">
+                        Wedding Live Painting
+                    </h3>
+
+                    <p class="exp-description">
+                        Elegant live-art to make your day uniquely artistic.
+                    </p>
+
+                    <div class="card-meta-row exp-meta-row">
+                        <span>3-5 hrs</span>
+                        <span>Venue</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <a class="exp-link exp-link-luxury"
+                       href="contact.html">
+                        Explore Experience →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="experience-card exp-card-luxury"
+                 data-filter-card
+                 data-category="corporate private">
+
+                <div class="exp-image exp-image-luxury">
+                    <img loading="lazy"
+                         src="images/experiences/corporate.jpeg"
+                         alt="Corporate wellness workshop">
+                </div>
+
+                <div class="exp-body exp-body-luxury">
+                    <h3 class="exp-title">
+                        Corporate Wellness Workshop
+                    </h3>
+
+                    <p class="exp-description">
+                        Team-building through mindful creative exercises.
+                    </p>
+
+                    <div class="card-meta-row exp-meta-row">
+                        <span>2.5 hrs</span>
+                        <span>Office/Studio</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <a class="exp-link exp-link-luxury"
+                       href="contact.html">
+                        Explore Experience →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="experience-card exp-card-luxury"
+                 data-filter-card
+                 data-category="kids birthday weekend">
+
+                <div class="exp-image exp-image-luxury">
+                    <img loading="lazy"
+                         src="images/experiences/kids.jpg"
+                         alt="Kids art event">
+                </div>
+
+                <div class="exp-body exp-body-luxury">
+                    <h3 class="exp-title">
+                        Kids Art Events
+                    </h3>
+
+                    <p class="exp-description">
+                        Hands-on, safe, and joyful art classes for children.
+                    </p>
+
+                    <div class="card-meta-row exp-meta-row">
+                        <span>90 mins</span>
+                        <span>Studio/Home</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <a class="exp-link exp-link-luxury"
+                       href="contact.html">
+                        Explore Experience →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="experience-card exp-card-luxury"
+                 data-filter-card
+                 data-category="private weekend">
+
+                <div class="exp-image exp-image-luxury">
+                    <img loading="lazy"
+                         src="images/experiences/couple.jpg"
+                         alt="Couple creative session">
+                </div>
+
+                <div class="exp-body exp-body-luxury">
+                    <h3 class="exp-title">
+                        Couple Creative Session
+                    </h3>
+
+                    <p class="exp-description">
+                        Shared creative sessions to connect and create together.
+                    </p>
+
+                    <div class="card-meta-row exp-meta-row">
+                        <span>2 hrs</span>
+                        <span>Studio</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <a class="exp-link exp-link-luxury"
+                       href="contact.html">
+                        Explore Experience →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="experience-card exp-card-luxury"
+                 data-filter-card
+                 data-category="private weekend corporate">
+
+                <div class="exp-image exp-image-luxury">
+                    <img loading="lazy"
+                         src="images/experiences/private.jpeg"
+                         alt="Private group workshop">
+                </div>
+
+                <div class="exp-body exp-body-luxury">
+                    <h3 class="exp-title">
+                        Private Group Workshop
+                    </h3>
+
+                    <p class="exp-description">
+                        Bespoke sessions crafted to your group's interests.
+                    </p>
+
+                    <div class="card-meta-row exp-meta-row">
+                        <span>2-3 hrs</span>
+                        <span>Studio/Venue</span>
+                        <span>Beginner</span>
+                    </div>
+
+                    <a class="exp-link exp-link-luxury"
+                       href="contact.html">
+                        Explore Experience →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <section class="cta-section">
         <div class="section-container">
@@ -340,7 +493,7 @@
                     <li>Phone: <a href="tel:+919449237357">+91 9449237357</a></li>
                     <li>WhatsApp: <a href="https://wa.me/919449237357" target="_blank" rel="noopener noreferrer">Chat with us</a></li>
                     <li>Email: <a href="mailto:artisticworks37@gmail.com">artisticworks37@gmail.com</a></li>
-                    <li>Locations: Bangalore (Koramangala, Indiranagar)</li>
+                    <li>Locations: Multiple locations across Bangalore including Indiranagar, Whitefield, Cubbon Park & more</li>
                 </ul>
 
                 <div class="footer-social-row" aria-label="Follow Artistic Works 7">
