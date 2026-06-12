@@ -5165,12 +5165,40 @@ footer {
 
 /* workshop grid */
 
-.workshops-section .visual-card-grid{
-    grid-template-columns:1fr;
-    gap:1.2rem;
-    justify-content:center;
+.workshops-section .visual-card-grid,
+.workshop-grid,
+.featured-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    padding:0 12px;
 }
 
+/* smaller shopping-style cards */
+.workshop-card,
+.featured-card{
+    border-radius:18px;
+    min-width:0;
+    width:100%;
+}
+
+/* image size */
+.workshop-card img,
+.featured-card-image img{
+    height:120px;
+    object-fit:cover;
+}
+
+/* compact content */
+.workshop-content,
+.featured-card-content{
+    padding:10px;
+}
+
+.featured-card-title,
+.workshop-content h3{
+    font-size:.95rem;
+    line-height:1.3;
+}
 /* card */
 
 .workshops-section .workshop-card{
@@ -5331,12 +5359,12 @@ footer {
 }
 
 /* PREMIUM WORKSHOP CARDS */
-/* .workshop-grid{
+.workshop-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:28px;
-    align-items:start;
-} */
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+    align-items:stretch;
+}
 
 /* =========================
    WORKSHOP PREMIUM CARDS
