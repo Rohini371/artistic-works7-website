@@ -159,6 +159,8 @@ const HERO_TRANSPARENT_PAGES = new Set([
     'contact'
 ]);
 
+const isMobileViewport = () => window.matchMedia('(max-width: 768px)').matches;
+
 const setNavbarHeroTransparentMode = () => {
     if (!navbar) return;
     const path = window.location.pathname || '';
@@ -167,7 +169,7 @@ const setNavbarHeroTransparentMode = () => {
     current = current.split(/[?#]/)[0];
     const base = current.replace(/\.html$/i, '').toLowerCase();
 
-    if (HERO_TRANSPARENT_PAGES.has(base)) {
+    if (HERO_TRANSPARENT_PAGES.has(base) && !isMobileViewport()) {
         navbar.classList.add('navbar--hero-transparent');
     } else {
         navbar.classList.remove('navbar--hero-transparent');
@@ -179,6 +181,13 @@ setNavbarHeroTransparentMode();
 const updateNavbarScrollState = () => {
     if (!navbar) return;
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (isMobileViewport()) {
+        navbar.classList.remove('navbar--hero-transparent');
+        navbar.classList.add('scrolled');
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        return;
+    }
 
     const isHeroTransparentMode = navbar?.classList.contains('navbar--hero-transparent');
 

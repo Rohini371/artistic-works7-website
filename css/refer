@@ -1848,86 +1848,79 @@ section + section::before {
 
 .site-footer {
     background: #1e121c;
-    color: #e5d2c8;
-    padding: 3.1rem 0 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    color:#E5D2C8;
+    padding:5rem 0 2rem;
+    border-top:1px solid rgba(255,255,255,.06);
 }
 
-.site-footer h4 {
-    color: #f8f2ee;
-    font-weight: 600;
-    margin-bottom: 1.1rem;
+.site-footer h4{
+    color:#F8F2EE;
+    font-weight:600;
+    margin-bottom:1.2rem;
 }
 
 .footer-links a,
 .contact-list a {
-    color: #e8ded2;
-    transition: 0.3s ease;
+    color: #E8DED2; /* Changed for better readability on dark background */
+    transition:.3s ease;
     font-family: 'Google Sans', sans-serif;
 }
 
 .footer-links a:hover,
 .contact-list a:hover {
-    color: #ffd3ac;
+    color: #FFD3AC; /* Changed for better readability and premium feel */
 }
 
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    margin-top: 2.2rem;
-    padding-top: 1rem;
-    text-align: center;
-    color: #a08f83;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.08);
+    margin-top:3rem;
+    padding-top:1.5rem;
+    text-align:center;
+    color:#A08F83;
 }
 
+/* Container that holds exactly 4 columns */
 .footer-container {
     display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.1fr);
-    gap: 2.5rem;
-    align-items: start;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    box-sizing: border-box;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
 }
 
+/* Fix only text columns alignment */
 .footer-middle,
 .footer-middle2,
 .footer-right {
     align-self: start;
-    min-width: 0;
+    padding-top: 12px; /* adjust if needed */
 }
+
+/* Left brand column */
+/* ==========================
+   FOOTER ETSY STYLE
+========================== */
 
 .footer-left {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    min-width: 0;
 }
 
 .footer-logo {
     display: flex;
     align-items: center;
     gap: 24px;
-    width: 100%;
-    max-width: 430px;
-    height: auto;
-    object-fit: contain;
 }
 
+/* Bigger logo like Etsy */
 .footer-logo .logo-circle.small {
     width: 110px;
     height: 110px;
-    border-radius: 20px;
+    border-radius: 20px; /* rounded square */
     overflow: hidden;
     background: transparent;
     flex-shrink: 0;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
 }
 
 .footer-logo .navbar-logo-img {
@@ -1937,21 +1930,20 @@ section + section::before {
     display: block;
 }
 
+/* Brand name */
 .footer-brand {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    width: 100%;
 }
 
 .footer-brand .brand-name {
     font-family: 'Borel', serif;
-    font-size: clamp(1.6rem, 2vw, 2rem);
+    font-size: 2rem;
     font-weight: 500;
-    color: #efe4da;
-    line-height: 1.1;
+    color: #EFE4DA;
+    line-height: 1;
     letter-spacing: 0.5px;
-    white-space: normal;
+    white-space: nowrap;
 }
 
 /* remove any old tagline spacing */
@@ -2061,47 +2053,14 @@ section + section::before {
 
 /* MOBILE */
 @media (max-width: 992px) {
-    .site-footer {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
     .footer-container {
         grid-template-columns: 1fr;
         gap: 2rem;
-        width: 100%;
-        max-width: 100%;
-        padding-left: 1rem;
-        padding-right: 1rem;
-        box-sizing: border-box;
-    }
-
-    .footer-left,
-    .footer-logo,
-    .footer-brand,
-    .footer-middle,
-    .footer-middle2,
-    .footer-right {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .footer-brand {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    .footer-brand .brand-name {
-        white-space: normal;
-        overflow-wrap: anywhere;
     }
 
     .footer-social-row {
         margin-top: 1rem;
-        justify-content: center;
+        justify-content: center; /* Center align naturally for tablet/mobile */
     }
 }
 
@@ -2143,7 +2102,6 @@ section + section::before {
     right: 24px;
     bottom: 95px;
     z-index: 9999;
-    box-sizing: border-box;
 
     background: #b35d4b;
     color: #fff;
@@ -2245,86 +2203,16 @@ section + section::before {
 
 @media (max-width:768px){
     .floating-request-btn{
-        left: 50%;
-        right: auto;
-        bottom: 88px;
-        width: min(300px, calc(100% - 32px));
-        max-width: calc(100% - 32px);
-        min-width: 0;
-        min-height: 42px;
-        height: 42px;
-        padding: 8px 14px;
-        font-size: 14px;
-        line-height: 1.3;
-        white-space: normal;
-        text-align: center;
-        overflow-wrap: anywhere;
-        box-sizing: border-box;
-        transform: translateX(-50%);
+        right:24px;
+        bottom:110px;
+        padding:12px 18px;
+        font-size:14px;
+        max-width:220px;
     }
 
     #floating-whatsapp{
-        right: 16px;
-        bottom: 16px;
-        width: 44px;
-        height: 44px;
-        min-width: 44px;
-        min-height: 44px;
-    }
-
-    .site-footer {
-        width: 100%;
-        max-width: 100%;
-        padding: 2.4rem 0 1.1rem;
-    }
-
-    .site-footer .footer-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.75rem;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0 1rem;
-    }
-
-    .footer-left,
-    .footer-middle,
-    .footer-middle2,
-    .footer-right {
-        width: 100%;
-        max-width: 100%;
-        justify-content: flex-start;
-        text-align: left;
-    }
-
-    .footer-brand {
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: start;
-        gap: 0.9rem;
-    }
-
-    .footer-logo {
-        max-width: min(100%, 300px);
-        width: min(100%, 300px);
-        height: auto;
-    }
-
-    .footer-brand .brand-name {
-        font-size: clamp(1.7rem, 8vw, 2.2rem);
-        max-width: 100%;
-    }
-
-    .footer-links,
-    .contact-list {
-        gap: 0.5rem;
-    }
-
-    .footer-bottom {
-        margin-top: 1.5rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        right:16px;
+        bottom:18px;
     }
 }
 
@@ -2335,25 +2223,7 @@ section + section::before {
 
 @media (max-width: 640px) {
     body {
-        padding-bottom: 96px;
-    }
-
-    .floating-request-btn {
-        left: 50%;
-        right: auto;
-        bottom: 88px;
-        width: min(360px, calc(100% - 28px));
-        max-width: calc(100% - 28px);
-        min-width: 0;
-        min-height: 44px;
-        height: 44px;
-        padding: 10px 18px;
-        font-size: 0.88rem;
-        text-align: center;
-        line-height: 1.3;
-        white-space: normal;
-        transform: translateX(-50%);
-        box-sizing: border-box;
+        padding-bottom: 126px;
     }
 
     .footer-cta-card {
@@ -2369,6 +2239,29 @@ section + section::before {
         min-width: 160px;
     }
 
+    .floating-request-btn {
+        bottom: 72px;
+        right: 14px;
+        min-width: 140px;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.9rem;
+    }
+
+        @media (max-width: 1400px) {
+    .floating-request-btn{
+        right: 18px;
+        bottom: 90px;
+        transform: scale(0.92);
+    }
+}
+
+@media (max-width: 1024px) {
+    .floating-request-btn{
+        right: 16px;
+        bottom: 85px;
+        transform: scale(0.88);
+    }
+}
     #floating-whatsapp {
         width: 42px;
         height: 42px;
@@ -2419,15 +2312,11 @@ section + section::before {
 
 html {
     scroll-behavior: smooth;
-    width: 100%;
-    max-width: 100%;
 }
 
 body {
     font-family: 'Google Sans', sans-serif;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
+
     background: linear-gradient(
         180deg,
         #F8F2EC 0%,
@@ -2436,41 +2325,11 @@ body {
 
     color: var(--text-dark);
     line-height: 1.6;
-    overflow-x: clip;
-}
-
-html,
-body,
-header,
-main,
-footer,
-section,
-.navbar,
-.navbar-container,
-.section-container,
-.site-footer,
-.footer-container,
-.hero-image-banner,
-.workshop-banner,
-.shop-banner,
-.gift-banner {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-}
-
-main,
-.section-container,
-.page-intro,
-.footer-container,
-.navbar-container {
-    width: 100%;
-    max-width: 100%;
+    overflow-x: hidden;
 }
 
 img {
     max-width: 100%;
-    height: auto;
 }
 
 /* ================================
@@ -2825,23 +2684,6 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-    .navbar,
-    .navbar--hero-transparent {
-        background: rgba(247, 244, 240, 0.97) !important;
-        backdrop-filter: blur(18px) saturate(1.08);
-        -webkit-backdrop-filter: blur(18px) saturate(1.08);
-        box-shadow: 0 12px 30px rgba(94, 77, 71, 0.08) !important;
-        border-bottom: 1px solid rgba(212, 168, 153, 0.18) !important;
-    }
-
-    .navbar--hero-transparent .nav-link,
-    .navbar--hero-transparent .logo-text,
-    .navbar--hero-transparent .nav-link.active,
-    .navbar--hero-transparent .hamburger-menu span {
-        color: var(--nav-text) !important;
-        text-shadow: none !important;
-    }
-
     .nav-dropdown-panel {
         position: static;
         transform: none;
@@ -2914,38 +2756,19 @@ img {
         padding: 0.95rem 1.1rem;
     }
 
-    .navbar-logo {
-        flex: 0 1 auto;
-        min-width: 0;
-    }
-
-    .logo-text-wrapper {
-        flex-shrink: 0;
-        min-width: 0;
-    }
-
-    .logo-text {
-        white-space: nowrap;
-    }
-
     .hamburger-menu {
         display: flex;
-        margin-left: auto;
-        flex-shrink: 0;
     }
 
     .nav-menu {
         position: fixed;
-        left: 0;
-        right: 0;
+        left: -100%;
         top: 68px;
         flex-direction: column;
         background: rgba(253, 251, 248, 0.98);
         width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
         text-align: left;
-        transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.24s ease, visibility 0.24s ease;
+        transition: transform 0.24s cubic-bezier(0.4, 0, 0.2, 1);
         gap: 0;
         padding: 1.5rem 0;
         backdrop-filter: blur(22px);
@@ -2954,21 +2777,12 @@ img {
         max-height: calc(100vh - 82px);
         overflow-y: auto;
         overscroll-behavior: contain;
-        transform: translateX(-101%);
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        display: none;
+        transform: translateX(-100%);
     }
 
     .nav-menu.active {
         left: 0;
-        right: 0;
         transform: translateX(0);
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        display: flex;
     }
 
     .navbar--hero-transparent .nav-menu.active .nav-link {
@@ -3076,25 +2890,25 @@ img {
 .hero-image-banner .hero-text-container { max-width: 980px; margin: 0 auto; text-align: center; }
 .hero-image-banner .hero-title { color: #fff; font-size: 3.4rem; margin: 0; }
 
-/* Banner pages keep the standard navbar shell on mobile; desktop can still use the transparent hero treatment when intentionally enabled. */
+/* Banner pages where navbar overlays the hero (no cream gap) */
 .navbar--hero-transparent {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(247, 244, 240, 0.9);
-    backdrop-filter: blur(16px) saturate(1.08);
-    -webkit-backdrop-filter: blur(16px) saturate(1.08);
-    box-shadow: 0 10px 28px rgba(94, 77, 71, 0.08);
-    border-bottom: 1px solid rgba(212, 168, 153, 0.18);
+    background: transparent !important;
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+    box-shadow: none !important;
+    border-bottom: 1px solid transparent !important;
 }
 
 .navbar--hero-transparent.scrolled {
-    background: rgba(247, 244, 240, 0.98);
-    backdrop-filter: blur(18px) saturate(1.08);
-    -webkit-backdrop-filter: blur(18px) saturate(1.08);
-    box-shadow: 0 14px 42px rgba(94, 77, 71, 0.09);
-    border-bottom: 1px solid rgba(212, 168, 153, 0.18);
+    background: rgba(255, 248, 240, 0.72) !important;
+    backdrop-filter: blur(24px) saturate(1.08);
+    -webkit-backdrop-filter: blur(24px) saturate(1.08);
+    box-shadow: 0 16px 44px rgba(94, 77, 71, 0.1) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.34) !important;
 }
 
 .navbar--hero-transparent .nav-link {
@@ -3265,52 +3079,9 @@ img {
 
 /* mobile */
 @media (max-width: 768px) {
-    .workshop-banner,
-    .shop-banner,
-    .gift-banner {
-        width: 100%;
-        height: auto;
-        overflow: hidden;
-        position: relative;
+    .workshop-banner {
+        height: 260px;
     }
-
-    .workshop-slider,
-    .shop-slider,
-    .gift-slider {
-        width: 100%;
-        position: relative;
-        aspect-ratio: 1240 / 300;
-        height: auto;
-    }
-
-    .workshop-slide,
-    .shop-slide,
-    .gift-slide {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-    }
-
-    .workshop-slide.active,
-    .shop-slide.active,
-    .gift-slide.active {
-        opacity: 1;
-        z-index: 1;
-    }
-
-    .workshop-slide img,
-    .shop-slide img,
-    .gift-slide img {
-        display: block;
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-        object-position: center;
-        background: #f5f1ed;
-    }
-
 }
 
 /* SHOP + GIFT SLIDER SHARED */
@@ -3321,12 +3092,24 @@ img {
     height: 500px;
     overflow: hidden;
     position: relative;
+    min-height: 180px;
+    max-height: 520px;
+}
+.workshop-slide img,
+.shop-slide img,
+.gift-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: block;
 }
 
 .shop-slider,
 .gift-slider {
     width: 100%;
-    height: 420PX;
+    /* height: 100%; */
+    height: 420px;
     position: relative;
 }
 
@@ -3351,6 +3134,14 @@ img {
     object-fit: cover;
 }
 
+/* .shop-slide img,
+.gift-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+} */
 /* arrows */
 
 .shop-arrow,
@@ -3410,49 +3201,6 @@ img {
     width: 28px;
     border-radius: 30px;
     background: rgba(255,255,255,0.95);
-}
-
-@media (max-width: 768px) {
-    .slider-arrow,
-    .shop-arrow,
-    .gift-arrow {
-        width: 32px;
-        height: 32px;
-        font-size: 16px;
-    }
-
-    .prev,
-    .prev-shop,
-    .prev-gift {
-        left: 8px;
-    }
-
-    .next,
-    .next-shop,
-    .next-gift {
-        right: 8px;
-    }
-
-    .slider-dots,
-    .shop-dots,
-    .gift-dots {
-        gap: 6px;
-        bottom: 10px;
-    }
-
-    .dot,
-    .shop-dot,
-    .gift-dot {
-        width: 7px;
-        height: 7px;
-    }
-
-    .dot.active,
-    .shop-dot.active,
-    .gift-dot.active {
-        width: 18px;
-        border-radius: 999px;
-    }
 }
 
 .hero::before {
@@ -4025,6 +3773,212 @@ img {
     }
 }
 
+@media (max-width:768px){
+
+    .hero-section,
+    .workshop-hero,
+    .shop-hero{
+        padding:18px 16px;
+        min-height:auto;
+    }
+
+    .hero-image-banner{
+        width:100%;
+        aspect-ratio:16/8;
+        min-height:180px;
+        max-height:240px;
+        overflow:hidden;
+        border-radius:20px;
+    }
+
+    .hero-image-banner img,
+    .hero-section img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+        display:block;
+    }
+
+/* =========================================================
+     TARGETED MOBILE-FIRST FIXES (320px - 430px) and TABLET (431px-768px)
+     Minimal overrides to restore premium layout while keeping responsive fixes
+     ========================================================= */
+
+@media (max-width: 430px) {
+
+    /* Workshop cards: single-column balanced height */
+    .workshop-grid,
+    .featured-grid,
+    .workshop-offerings-container {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        padding: 0 14px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .workshop-card,
+    .featured-card,
+    .card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 auto !important;
+    }
+
+    .workshop-card img,
+    .card img,
+    .featured-card-image img {
+        width: 100% !important;
+        height: 180px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        border-radius: 12px !important;
+        display: block !important;
+    }
+
+    .workshop-content,
+    .card-body,
+    .featured-card-content {
+        padding: 12px !important;
+    }
+
+    .workshop-content h3,
+    .featured-card-title {
+        font-size: 1.05rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 8px !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* Hero: page-specific minimum heights to avoid global fixed height */
+    .hero-image-banner { min-height: 160px !important; max-height: 260px !important; height: auto !important; }
+    .workshop-hero .hero-image-banner { min-height: 200px !important; }
+    .gallery-hero .hero-image-banner { min-height: 220px !important; }
+    .shop-hero .hero-image-banner { min-height: 200px !important; }
+    .gift-hero .hero-image-banner { min-height: 180px !important; }
+    .about-hero .hero-image-banner { min-height: 240px !important; }
+    .contact-hero .hero-image-banner { min-height: 200px !important; }
+    .community-hero .hero-image-banner { min-height: 200px !important; }
+
+    .hero-image-banner img,
+    .hero-banner img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+
+    /* Scale navigation arrows proportionally on small screens */
+    .slider-arrow,
+    .shop-arrow,
+    .gift-arrow,
+    .prev,
+    .next,
+    .prev-shop,
+    .next-shop,
+    .prev-gift,
+    .next-gift {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 18px !important;
+    }
+
+    /* Compact Register button and ensure spacing from WhatsApp (mobile <=768px) */
+    .floating-reg-btn,
+    button[class*="Register"],
+    a[class*="Register"] {
+        /* Width reduced ~23% from previous max */
+        width: calc(100% - 48px) !important;
+        max-width: 200px !important; /* target smaller footprint on phones */
+
+        /* Button height & typography */
+        height: 50px !important; /* target 48-52px */
+        line-height: 50px !important;
+        padding: 0 16px !important; /* reduced vertical padding (height controls vertical rhythm) */
+        font-size: 15px !important; /* 15-16px requirement */
+        font-weight: 600 !important; /* slightly reduced while readable */
+
+        border-radius: 16px !important; /* preserve design language */
+        border: 1px solid rgba(0,0,0,0.06) !important; /* slightly thinner subtle border */
+
+        bottom: 80px !important; /* keep above WhatsApp */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important; /* softened shadow */
+        z-index: 999 !important;
+    }
+
+    .whatsapp-float,
+    a[href*="wa.me"],
+    a[href*="whatsapp"] {
+        bottom: 14px !important;
+        right: 16px !important;
+        z-index: 1000 !important;
+    }
+
+    /* Remove large blank area under footer on small mobile */
+    footer { padding-bottom: 28px !important; }
+
+    /* Navbar: compact spacing and logo sizing */
+    .navbar-container { padding: 10px 14px !important; }
+    .logo-circle { width: 36px !important; height: 36px !important; }
+    .logo-text { font-size: 0.95rem !important; }
+
+    /* Prevent horizontal overflow */
+    html, body { overflow-x: hidden !important; }
+}
+
+@media (min-width: 431px) and (max-width: 768px) {
+    /* Tablet: two-column workshops with balanced image height */
+    .workshop-grid,
+    .featured-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; padding: 0 16px !important; }
+
+    .workshop-card img, .card img { height: 200px !important; object-fit: cover !important; }
+
+    .slider-arrow, .shop-arrow, .gift-arrow { width: 48px !important; height: 48px !important; font-size: 20px !important; }
+
+    footer { padding-bottom: 48px !important; }
+
+    .floating-reg-btn, button[class*="Register"], a[class*="Register"] {
+        bottom: 88px !important;
+        width: calc(100% - 56px) !important;
+        max-width: 220px !important;
+        height: 50px !important;
+        line-height: 50px !important;
+        padding: 0 16px !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+        border: 1px solid rgba(0,0,0,0.06) !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important;
+    }
+}
+
+/* Small mobile footer/layout polish */
+@media (max-width: 430px) {
+    .footer-container { display: flex !important; flex-direction: column !important; gap: 16px !important; align-items: stretch !important; }
+    .footer-social-row { justify-content: center !important; gap: 12px !important; }
+    .footer-bottom { text-align: center !important; padding-top: 8px !important; }
+    .footer-cta-actions { justify-content: center !important; }
+    .site-footer, footer { padding-bottom: 28px !important; }
+}
+
+
+    .hero-content,
+    .workshop-content{
+        padding:22px 18px;
+        border-radius:28px;
+    }
+
+    .hero-content h1,
+    .workshop-content h1{
+        font-size:1.9rem;
+        line-height:1.2;
+    }
+}
+
 /* ================================
    RESPONSIVE DESIGN
    ================================ */
@@ -4089,158 +4043,10 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-    html,
-    body,
-    header,
-    main,
-    footer,
-    section,
-    .navbar,
-    .navbar-container,
-    .section-container,
-    .hero-image-banner,
-    .workshop-banner,
-    .shop-banner,
-    .gift-banner,
-    .site-footer,
-    .footer-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box;
-    }
-
-    .navbar {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        height: auto !important;
-        background: #f7f4f0 !important;
-        box-shadow: 0 10px 28px rgba(94, 77, 71, 0.08) !important;
-        border-bottom: 1px solid rgba(212, 168, 153, 0.2) !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-
-    .navbar--hero-transparent,
-    .navbar--hero-transparent.scrolled {
-        position: relative !important;
-        background: #f7f4f0 !important;
-        box-shadow: 0 10px 28px rgba(94, 77, 71, 0.08) !important;
-        border-bottom: 1px solid rgba(212, 168, 153, 0.2) !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-    }
-
-    .navbar-container {
-        min-height: 72px;
-        height: auto;
-    }
-
-    .navbar--hero-transparent .nav-link,
-    .navbar--hero-transparent .logo-text,
-    .navbar--hero-transparent .nav-link.active,
-    .navbar--hero-transparent .hamburger-menu span {
-        color: var(--nav-text) !important;
-        text-shadow: none !important;
-    }
-
-    .featured-grid,
-    .workshop-grid,
-    .collection-grid,
-    .service-grid,
-    .why-grid,
-    .location-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
-    .featured-card,
-    .collection-card,
-    .workshop-card,
-    .service-card,
-    .location-card,
-    .why-card {
-        min-width: 0;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .featured-card-content,
-    .collection-card-content,
-    .card-content,
-    .workshop-card-content,
-    .location-card-content,
-    .card-image-container {
-        min-width: 0;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .cta-buttons {
-        width: 100%;
-        min-width: 0;
-    }
-
     .hero-image-banner {
-        height: auto;
+        height: clamp(180px, 40vw, 280px);
         margin-top: 0;
         border-radius: 0 0 12px 12px;
-        overflow: hidden;
-    }
-
-    .hero-image-banner .banner-image {
-        position: relative;
-        inset: auto;
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-        object-position: center;
-        display: block;
-    }
-
-    .workshop-banner,
-    .shop-banner,
-    .gift-banner {
-        width: 100%;
-        height: auto;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .workshop-slider,
-    .shop-slider,
-    .gift-slider {
-        width: 100%;
-        position: relative;
-        aspect-ratio: 1240 / 300;
-        height: auto;
-    }
-
-    .workshop-slide,
-    .shop-slide,
-    .gift-slide {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        opacity: 0;
-    }
-
-    .workshop-slide.active,
-    .shop-slide.active,
-    .gift-slide.active {
-        opacity: 1;
-        z-index: 1;
-    }
-
-    .workshop-slide img,
-    .shop-slide img,
-    .gift-slide img {
-        display: block;
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-        object-position: center;
     }
 
     .navbar-container {
@@ -4355,10 +4161,10 @@ img {
     .why-grid,
     .service-grid,
     .collection-grid,
-    .workshop-grid,
+    .workshop-grid{
     /* .gallery-grid, */
     /* .category-grid  */
-    {
+    
         grid-template-columns: 1fr;
         gap: 1.2rem;
         overflow-x: hidden;
@@ -4407,7 +4213,7 @@ img {
     }
 
     .hero {
-        margin-top: 0;
+        margin-top: 55px;
         padding: 1rem;
     }
 
@@ -4595,21 +4401,6 @@ img {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
-}
-
-@media screen and (max-width: 768px) {
-    .navbar-container,
-    .section-container {
-        width: 100% !important;
-        max-width: none !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-
-    .section-container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
 }
 
 .section-header {
@@ -5603,32 +5394,24 @@ footer {
 .workshops-section .visual-card-grid,
 .workshop-grid,
 .featured-grid{
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
     gap:12px;
-    padding:0;
+    padding:0 12px;
 }
 
 /* smaller shopping-style cards */
 .workshop-card,
-.featured-card,
-.collection-card{
+.featured-card{
     border-radius:18px;
     min-width:0;
     width:100%;
-    max-width:100%;
 }
 
 /* image size */
-.featured-card-image {
-    height: auto;
-    overflow: visible;
-}
-
-.featured-card-image img {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
+.workshop-card img,
+.featured-card-image img{
+    height:120px;
+    object-fit:cover;
 }
 
 /* compact content */
@@ -6206,4 +5989,806 @@ footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
+}
+
+/* =========================================================
+   SAFE MOBILE/TABLET-ONLY APPENDIX (NO DESKTOP CHANGES)
+   - Fix broken 4-column mobile cards -> 2-column premium cards
+   - Compact & equal card heights; clamp typography
+   - Image height 125px–140px
+   - Fix overlap: Register Upcoming Workshop button, WhatsApp btn, footer
+   - Convert ONLY location sections into horizontal swipe
+   - Do NOT convert featured/workshop cards into sliders
+   ========================================================= */
+/* ==========================================
+   MOBILE WORKSHOP + FEATURED CARDS
+========================================== */
+
+@media(max-width:768px){
+
+    /* grid */
+    .workshop-grid,
+    .featured-grid{
+        display:grid !important;
+        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
+        gap:12px !important;
+        padding:0 12px !important;
+        width:100% !important;
+        max-width:100% !important;
+        margin-left:auto !important;
+        margin-right:auto !important;
+        overflow-x:hidden !important;
+    }
+
+
+    /* card */
+    .workshop-card,
+    .featured-card{
+        border-radius:20px;
+        overflow:hidden;
+        min-height:auto;
+    }
+
+    /* image */
+    .workshop-card img,
+    .featured-card-image img{
+        width:100%;
+        height:120px;   /* smaller image */
+        object-fit:cover;
+        border-radius:14px;
+    }
+
+    /* content */
+    .workshop-content,
+    .featured-card-content{
+        padding:12px;
+    }
+
+    /* title */
+    .workshop-content h3,
+    .featured-card-title{
+        font-size:1rem;
+        line-height:1.25;
+        margin-bottom:8px;
+
+        display:-webkit-box;
+        -webkit-line-clamp:2;
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+    }
+
+    /* chips */
+    .workshop-info,
+    .featured-card-meta{
+        gap:6px;
+        margin:8px 0;
+    }
+
+    .workshop-info span,
+    .featured-card-meta span{
+        padding:7px 12px;
+        font-size:.78rem;
+        border-radius:999px;
+    }
+
+    /* description shorter */
+    .featured-card-description,
+    .workshop-content p{
+        font-size:.85rem;
+        line-height:1.4;
+
+        display:-webkit-box;
+        -webkit-line-clamp:2; /* only 2 lines */
+        -webkit-box-orient:vertical;
+        overflow:hidden;
+
+        margin:8px 0;
+    }
+
+    /* footer */
+    .featured-card-footer{
+        margin-top:8px;
+        flex-direction:column;
+        gap:8px;
+    }
+
+    /* price */
+    .featured-card-pricing{
+        font-size:.85rem;
+    }
+
+    /* button */
+    .book-now-btn,
+    .workshop-cta{
+        width:100%;
+        padding:10px;
+        border-radius:14px;
+        font-size:.85rem;
+    }
+}
+
+/* ==========================================
+   MOBILE HERO EMPTY SPACE FIX
+========================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* Kill forced slider heights */
+    .hero-slider,
+    .hero-carousel,
+    .slider-container,
+    .carousel-container,
+    .swiper,
+    .swiper-wrapper,
+    .slider-track,
+    .hero-banner {
+        min-height: unset !important;
+        max-height: fit-content !important;
+    }
+
+    /* Fix each slide */
+    .slide,
+    .swiper-slide,
+    .hero-slide,
+    .carousel-item {
+        height: auto !important;
+        min-height: unset !important;
+    }
+
+    /* Banner image controls height */
+    .slide img,
+    .hero-slide img,
+    .hero-banner img,
+    .carousel-item img {
+        width: 100%;
+        height: auto !important;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* Remove hidden spacing under slider */
+    .slider-wrapper,
+    .hero-wrapper,
+    .hero-section {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Pull intro section upward */
+    .intro-section,
+    .about-preview,
+    .workshop-intro,
+    .collection-section {
+        margin-top: -20px !important;
+        position: relative;
+        z-index: 2;
+    }
+}
+
+/* ==========================================
+   FOOTER MOBILE FIX
+   ========================================== */
+
+html,
+body {
+    overflow-x: hidden;
+    min-height: 100%;
+}
+
+footer,
+.footer,
+.footer-container {
+    min-height: auto !important;
+    overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding-bottom: 48px;
+    }
+}
+
+@media (max-width:768px){
+
+    .location-section .location-grid{
+        grid-template-columns:1fr !important;
+    }
+
+    .location-grid > .location-card{
+        min-height:auto !important;
+    }
+
+    .location-grid > .location-card .card-image-container{
+        height:220px !important;
+    }
+
+    .location-grid > .location-card .location-card-content{
+        min-height:auto !important;
+    }
+}
+
+/* =========================================================
+   CATEGORY-SPECIFIC RESPONSIVE IMAGE LAYOUTS
+   DESKTOP SAFE
+========================================================= */
+
+@media (max-width:768px){
+    html,
+    body{
+        overflow-x:hidden !important;
+        width:100%;
+    }
+
+    .featured-grid,
+    .workshop-grid,
+    .events-grid,
+    .experience-grid,
+    .collection-grid,
+    .gallery-grid{
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:12px;
+        width:100%;
+        max-width:100%;
+    }
+
+    .featured-card,
+    .workshop-card,
+    .experience-card,
+    .collection-card,
+    .gallery-card{
+        min-width:0;
+        width:100%;
+        overflow:hidden;
+    }
+
+    .featured-card-image,
+    .explore-card-image{
+        height:140px;
+    }
+
+    .featured-card-image img,
+    .explore-card-image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+    }
+
+    .workshops-section .workshop-card .collection-card-image,
+    .workshop-card > .collection-card-image{
+        height:220px;
+    }
+
+    .workshop-card > img{
+        height:220px;
+        object-fit:cover;
+        object-position:center;
+    }
+
+    .collection-section .collection-card-image,
+    .gift-categories-section .collection-card-image{
+        height:180px;
+    }
+
+    .collection-section .collection-card-image img,
+    .gift-categories-section .collection-card-image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+    }
+
+    .gallery-section .gallery-card img{
+        height:240px;
+        object-fit:contain;
+        object-position:center;
+        background:#f7f1ea;
+        border-radius:18px;
+    }
+
+    .events-section .experience-card .exp-image,
+    .most-gifted-section .experience-card .exp-image{
+        height:180px;
+    }
+
+    .events-section .experience-card .exp-image img,
+    .most-gifted-section .experience-card .exp-image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+    }
+
+    .location-grid{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .location-card{
+        min-height:auto !important;
+    }
+
+    .location-card .card-image-container{
+        height:220px !important;
+        overflow:hidden;
+    }
+
+    .location-card .card-image-container img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+    }
+
+    .google-review-thumbs img{
+        width:104px;
+        height:104px;
+        object-fit:cover;
+    }
+
+    .book-now-btn,
+    .workshop-cta,
+    .exp-link{
+        width:100%;
+        padding:9px 12px !important;
+        font-size:.8rem !important;
+        border-radius:14px !important;
+    }
+
+    .hero-image-banner{
+        overflow:hidden !important;
+    }
+
+    .hero-image-banner img,
+    .banner-image{
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+        object-position:center !important;
+    }
+
+    .workshop-banner img,
+    .gift-banner img,
+    .shop-banner img{
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+        object-position:center !important;
+    }
+
+    footer,
+    .footer,
+    .site-footer{
+        overflow:visible !important;
+        height:auto !important;
+    }
+
+    .footer-container{
+        display:flex !important;
+        flex-direction:column !important;
+        gap:24px !important;
+    }
+
+    footer{
+        padding-bottom:90px !important;
+    }
+}
+
+@media (max-width:560px){
+    .featured-grid,
+    .workshop-grid,
+    .events-grid,
+    .experience-grid,
+    .collection-grid,
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+
+    .featured-card-image,
+    .explore-card-image{
+        height:170px;
+    }
+
+    .workshops-section .workshop-card .collection-card-image,
+    .workshop-card > .collection-card-image,
+    .workshop-card > img{
+        height:210px;
+    }
+
+    .collection-section .collection-card-image,
+    .gift-categories-section .collection-card-image{
+        height:210px;
+    }
+
+    .gallery-section .gallery-card img{
+        height:260px;
+    }
+
+    .events-section .experience-card .exp-image,
+    .most-gifted-section .experience-card .exp-image{
+        height:210px;
+    }
+}
+
+/* ==========================================
+   MOBILE SLIDER ARROW FIX
+========================================== */
+
+@media (max-width:768px){
+
+    /* make slider relative */
+    .hero-slider,
+    .slider-container,
+    .banner-slider,
+    .hero-carousel{
+        position:relative !important;
+    }
+
+    /* center next/prev arrows */
+    .prev,
+    .next,
+    .slider-prev,
+    .slider-next,
+    .hero-prev,
+    .hero-next{
+
+        position:absolute !important;
+        top:50% !important;
+        transform:translateY(-50%) !important;
+        z-index:20 !important;
+
+        width:42px !important;
+        height:42px !important;
+
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+    }
+
+    .prev,
+    .slider-prev,
+    .hero-prev{
+        left:8px !important;
+    }
+
+    .next,
+    .slider-next,
+    .hero-next{
+        right:8px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .workshop-banner {
+        height: auto;
+        min-height: 220px;
+    }
+
+    .workshop-slider,
+    .workshop-slide {
+        height: 100%;
+    }
+
+    .workshop-slide img,
+    .banner-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .shop-slide img,
+    .gift-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right center;
+    }
+
+    .workshop-slider,
+    .gift-slider,
+    .shop-slider {
+        height: auto;
+    }
+
+    .workshop-slide,
+    .gift-slide,
+    .shop-slide {
+        position: relative;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .hero-section,
+    .workshop-hero,
+    .shop-hero {
+        padding: 18px 16px !important;
+        min-height: auto;
+    }
+
+    .hero-content,
+    .workshop-content {
+        padding: 22px 18px !important;
+        border-radius: 28px;
+    }
+
+    .hero-content h1,
+    .workshop-content h1 {
+        font-size: 1.9rem;
+        line-height: 1.2;
+        margin-bottom: 12px;
+    }
+
+    .hero-content p,
+    .workshop-content p {
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+
+    .hero-buttons,
+    .workshop-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        margin-top: 18px;
+    }
+
+    .hero-buttons a,
+    .workshop-buttons a,
+    .hero-buttons button,
+    .workshop-buttons button {
+        width: 78%;
+        max-width: 240px;
+        min-height: 48px;
+        border-radius: 999px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 768px) {
+
+    
+
+    /* hero container */
+    .hero-content {
+        max-width: 100% !important;
+        padding: 0 12px !important;
+    }
+
+    /* heading zoom out */
+    .hero-content h1,
+    .workshop-content h1 {
+        font-size: 1.9rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* paragraph */
+    .hero-content p,
+    .workshop-content p {
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+    /* FIX EXTRA EMPTY SPACE IN WORKSHOP PAGE MOBILE */
+.hero {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 40px 20px !important;
+}
+
+.workshop-banner {
+    margin-bottom: 0 !important;
+}
+
+.workshops-section {
+    margin-top: 0 !important;
+    padding-top: 20px !important;
+}
+
+    /* buttons smaller */
+    .hero-buttons,
+    .workshop-buttons {
+        transform: scale(0.9);
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* banner image zoom */
+    .hero-image-banner img,
+    .hero-section img {
+        object-fit: cover;
+        object-position: center;
+    }
+       .hero h1,
+    .banner h1 {
+        font-size: 2rem !important;
+        line-height: 1.2;
+    }
+
+    .hero p,
+    .banner p {
+        font-size: 0.95rem !important;
+    }
+    
+
+
+
+
+/* image should fill section */
+.hero img,
+.hero-section img,
+.workshop-banner img,
+.shop-banner img,
+.gift-banner img,
+.banner-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: none !important;
+    display: block !important;
+}
+/* MOBILE BANNER FIX */
+
+}
+/* FIX LARGE EMPTY HERO SPACE - MOBILE ONLY */
+/* MOBILE FIX ONLY - HERO/BANNER HEIGHT */
+
+
+ /* ===== Mobile Banner Fix ===== */
+@media (max-width: 768px) {
+
+    .hero,
+    .hero-section,
+    .banner,
+    .home-banner {
+        min-height: auto !important;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .workshop-banner,
+    .shop-banner,
+    .gift-banner {
+        height: clamp(220px, 42vw, 320px) !important;
+        min-height: 220px !important;
+        overflow: hidden;
+    }
+
+    .hero img,
+    .hero-section img,
+    .banner img,
+    .home-banner img {
+        width: 100% !important;
+        height: auto;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: none !important;
+        display: block;
+    }
+
+    .workshop-banner img,
+    .shop-banner img,
+    .gift-banner img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: none !important;
+        display: block;
+    }
+}
+
+@media (max-width: 900px) {
+    body > .hero:not(.hero-image-banner) {
+        min-height: auto !important;
+        padding: 52px 18px 46px !important;
+        border-radius: 0 0 22px 22px;
+        background: linear-gradient(180deg, #fbf7f1 0%, #f7f1eb 100%);
+    }
+
+    body > .hero:not(.hero-image-banner) .hero-content {
+        max-width: 720px !important;
+        padding: 0 !important;
+        animation: none !important;
+        opacity: 1 !important;
+        width: 100% !important;
+    }
+
+    body > .hero:not(.hero-image-banner) .hero-text-container {
+        gap: 0.75rem;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    body > .hero:not(.hero-image-banner) .hero-text-container > * {
+        width: min(100%, calc(100vw - 44px)) !important;
+        max-width: min(100%, calc(100vw - 44px)) !important;
+        min-width: 0 !important;
+    }
+
+    body > .hero:not(.hero-image-banner) .hero-accent,
+    body > .hero:not(.hero-image-banner) .hero-title,
+    body > .hero:not(.hero-image-banner) .hero-handwritten,
+    body > .hero:not(.hero-image-banner) .hero-subtitle {
+        color: #1E121C !important;
+        opacity: 1 !important;
+        text-shadow: none !important;
+        max-width: min(100%, calc(100vw - 40px)) !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere;
+    }
+
+    body > .hero:not(.hero-image-banner) .hero-title {
+        max-width: min(100%, calc(100vw - 44px)) !important;
+        font-size: clamp(1.45rem, 5.2vw, 2.2rem) !important;
+        line-height: 1.18 !important;
+        overflow-wrap: anywhere;
+        word-break: normal;
+        text-wrap: balance;
+    }
+
+    body > .hero:not(.hero-image-banner) .hero-subtitle {
+        font-size: 0.98rem !important;
+        line-height: 1.65 !important;
+        max-width: min(100%, calc(100vw - 44px)) !important;
+        overflow-wrap: break-word;
+    }
+
+    .navbar--hero-transparent:has(+ .hero) {
+        background: rgba(247,244,240,0.88) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 10px 30px rgba(94, 77, 71, 0.08) !important;
+    }
+
+    .navbar--hero-transparent:has(+ .hero) .logo-text {
+        color: var(--deep-taupe) !important;
+        text-shadow: none !important;
+    }
+
+    .navbar--hero-transparent:has(+ .hero) .hamburger-menu span {
+        background-color: var(--deep-taupe) !important;
+    }
+}
+
+@media (max-width: 430px) {
+    body > .hero:not(.hero-image-banner) {
+        padding: 44px 18px 40px !important;
+    }
+
+    body > .hero:not(.hero-image-banner) .hero-title {
+        font-size: clamp(1.35rem, 7vw, 1.7rem) !important;
+        line-height: 1.22 !important;
+    }
+
+    body > .hero:not(.hero-image-banner) .hero-handwritten,
+    body > .hero:not(.hero-image-banner) .hero-subtitle {
+        font-size: 0.92rem !important;
+        line-height: 1.55 !important;
+    }
+
+    .navbar,
+    .navbar--hero-transparent {
+        background: rgba(247,244,240,0.92) !important;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+    }
+
+    .navbar .logo-text,
+    .navbar--hero-transparent .logo-text {
+        color: var(--deep-taupe) !important;
+        text-shadow: none !important;
+    }
+
+    .navbar .hamburger-menu span,
+    .navbar--hero-transparent .hamburger-menu span {
+        background-color: var(--deep-taupe) !important;
+    }
 }
