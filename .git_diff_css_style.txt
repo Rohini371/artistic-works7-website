@@ -1,0 +1,914 @@
+﻿diff --git a/css/style.css b/css/style.css
+index 2c236d3..549da80 100644
+--- a/css/style.css
++++ b/css/style.css
+@@ -3092,12 +3092,24 @@ img {
+     height: 500px;
+     overflow: hidden;
+     position: relative;
++    min-height: 180px;
++    max-height: 520px;
++}
++.workshop-slide img,
++.shop-slide img,
++.gift-slide img {
++        width: 100%;
++        height: 100%;
++        object-fit: cover;
++        object-position: center center;
++        display: block;
+ }
+ 
+ .shop-slider,
+ .gift-slider {
+     width: 100%;
+-    height: 420PX;
++    /* height: 100%; */
++    height: 420px;
+     position: relative;
+ }
+ 
+@@ -3122,6 +3134,14 @@ img {
+     object-fit: cover;
+ }
+ 
++/* .shop-slide img,
++.gift-slide img {
++    width: 100%;
++    height: 100%;
++    object-fit: cover;
++    object-position: center;
++    display: block;
++} */
+ /* arrows */
+ 
+ .shop-arrow,
+@@ -3753,6 +3773,46 @@ img {
+     }
+ }
+ 
++@media (max-width:768px){
++
++    .hero-section,
++    .workshop-hero,
++    .shop-hero{
++        padding:18px 16px;
++        min-height:auto;
++    }
++
++    .hero-image-banner{
++        width:100%;
++        aspect-ratio:16/8;
++        min-height:180px;
++        max-height:240px;
++        overflow:hidden;
++        border-radius:20px;
++    }
++
++    .hero-image-banner img,
++    .hero-section img{
++        width:100%;
++        height:100%;
++        object-fit:cover;
++        object-position:center;
++        display:block;
++    }
++
++    .hero-content,
++    .workshop-content{
++        padding:22px 18px;
++        border-radius:28px;
++    }
++
++    .hero-content h1,
++    .workshop-content h1{
++        font-size:1.9rem;
++        line-height:1.2;
++    }
++}
++
+ /* ================================
+    RESPONSIVE DESIGN
+    ================================ */
+@@ -3935,10 +3995,10 @@ img {
+     .why-grid,
+     .service-grid,
+     .collection-grid,
+-    .workshop-grid,
++    .workshop-grid{
+     /* .gallery-grid, */
+     /* .category-grid  */
+-    {
++    
+         grid-template-columns: 1fr;
+         gap: 1.2rem;
+         overflow-x: hidden;
+@@ -5763,4 +5823,806 @@ footer {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+     gap: 2rem;
+-}
+\ No newline at end of file
++}
++
++/* =========================================================
++   SAFE MOBILE/TABLET-ONLY APPENDIX (NO DESKTOP CHANGES)
++   - Fix broken 4-column mobile cards -> 2-column premium cards
++   - Compact & equal card heights; clamp typography
++   - Image height 125pxΓÇô140px
++   - Fix overlap: Register Upcoming Workshop button, WhatsApp btn, footer
++   - Convert ONLY location sections into horizontal swipe
++   - Do NOT convert featured/workshop cards into sliders
++   ========================================================= */
++/* ==========================================
++   MOBILE WORKSHOP + FEATURED CARDS
++========================================== */
++
++@media(max-width:768px){
++
++    /* grid */
++    .workshop-grid,
++    .featured-grid{
++        display:grid !important;
++        grid-template-columns:repeat(2, minmax(0, 1fr)) !important;
++        gap:12px !important;
++        padding:0 12px !important;
++        width:100% !important;
++        max-width:100% !important;
++        margin-left:auto !important;
++        margin-right:auto !important;
++        overflow-x:hidden !important;
++    }
++
++
++    /* card */
++    .workshop-card,
++    .featured-card{
++        border-radius:20px;
++        overflow:hidden;
++        min-height:auto;
++    }
++
++    /* image */
++    .workshop-card img,
++    .featured-card-image img{
++        width:100%;
++        height:120px;   /* smaller image */
++        object-fit:cover;
++        border-radius:14px;
++    }
++
++    /* content */
++    .workshop-content,
++    .featured-card-content{
++        padding:12px;
++    }
++
++    /* title */
++    .workshop-content h3,
++    .featured-card-title{
++        font-size:1rem;
++        line-height:1.25;
++        margin-bottom:8px;
++
++        display:-webkit-box;
++        -webkit-line-clamp:2;
++        -webkit-box-orient:vertical;
++        overflow:hidden;
++    }
++
++    /* chips */
++    .workshop-info,
++    .featured-card-meta{
++        gap:6px;
++        margin:8px 0;
++    }
++
++    .workshop-info span,
++    .featured-card-meta span{
++        padding:7px 12px;
++        font-size:.78rem;
++        border-radius:999px;
++    }
++
++    /* description shorter */
++    .featured-card-description,
++    .workshop-content p{
++        font-size:.85rem;
++        line-height:1.4;
++
++        display:-webkit-box;
++        -webkit-line-clamp:2; /* only 2 lines */
++        -webkit-box-orient:vertical;
++        overflow:hidden;
++
++        margin:8px 0;
++    }
++
++    /* footer */
++    .featured-card-footer{
++        margin-top:8px;
++        flex-direction:column;
++        gap:8px;
++    }
++
++    /* price */
++    .featured-card-pricing{
++        font-size:.85rem;
++    }
++
++    /* button */
++    .book-now-btn,
++    .workshop-cta{
++        width:100%;
++        padding:10px;
++        border-radius:14px;
++        font-size:.85rem;
++    }
++}
++
++/* ==========================================
++   MOBILE HERO EMPTY SPACE FIX
++========================================== */
++
++@media screen and (max-width: 768px) {
++
++    /* Kill forced slider heights */
++    .hero-slider,
++    .hero-carousel,
++    .slider-container,
++    .carousel-container,
++    .swiper,
++    .swiper-wrapper,
++    .slider-track,
++    .hero-banner {
++        min-height: unset !important;
++        max-height: fit-content !important;
++    }
++
++    /* Fix each slide */
++    .slide,
++    .swiper-slide,
++    .hero-slide,
++    .carousel-item {
++        height: auto !important;
++        min-height: unset !important;
++    }
++
++    /* Banner image controls height */
++    .slide img,
++    .hero-slide img,
++    .hero-banner img,
++    .carousel-item img {
++        width: 100%;
++        height: auto !important;
++        display: block;
++        object-fit: cover;
++    }
++
++    /* Remove hidden spacing under slider */
++    .slider-wrapper,
++    .hero-wrapper,
++    .hero-section {
++        padding-bottom: 0 !important;
++        margin-bottom: 0 !important;
++    }
++
++    /* Pull intro section upward */
++    .intro-section,
++    .about-preview,
++    .workshop-intro,
++    .collection-section {
++        margin-top: -20px !important;
++        position: relative;
++        z-index: 2;
++    }
++}
++
++/* ==========================================
++   FOOTER MOBILE FIX
++   ========================================== */
++
++html,
++body {
++    overflow-x: hidden;
++    min-height: 100%;
++}
++
++footer,
++.footer,
++.footer-container {
++    min-height: auto !important;
++    overflow: visible !important;
++}
++
++@media (max-width: 768px) {
++    footer {
++        padding-bottom: 90px;
++    }
++}
++
++@media (max-width:768px){
++
++    .location-section .location-grid{
++        grid-template-columns:1fr !important;
++    }
++
++    .location-grid > .location-card{
++        min-height:auto !important;
++    }
++
++    .location-grid > .location-card .card-image-container{
++        height:220px !important;
++    }
++
++    .location-grid > .location-card .location-card-content{
++        min-height:auto !important;
++    }
++}
++
++/* =========================================================
++   CATEGORY-SPECIFIC RESPONSIVE IMAGE LAYOUTS
++   DESKTOP SAFE
++========================================================= */
++
++@media (max-width:768px){
++    html,
++    body{
++        overflow-x:hidden !important;
++        width:100%;
++    }
++
++    .featured-grid,
++    .workshop-grid,
++    .events-grid,
++    .experience-grid,
++    .collection-grid,
++    .gallery-grid{
++        display:grid;
++        grid-template-columns:repeat(2,minmax(0,1fr));
++        gap:12px;
++        width:100%;
++        max-width:100%;
++    }
++
++    .featured-card,
++    .workshop-card,
++    .experience-card,
++    .collection-card,
++    .gallery-card{
++        min-width:0;
++        width:100%;
++        overflow:hidden;
++    }
++
++    .featured-card-image,
++    .explore-card-image{
++        height:140px;
++    }
++
++    .featured-card-image img,
++    .explore-card-image img{
++        width:100%;
++        height:100%;
++        object-fit:cover;
++        object-position:center;
++    }
++
++    .workshops-section .workshop-card .collection-card-image,
++    .workshop-card > .collection-card-image{
++        height:220px;
++    }
++
++    .workshop-card > img{
++        height:220px;
++        object-fit:cover;
++        object-position:center;
++    }
++
++    .collection-section .collection-card-image,
++    .gift-categories-section .collection-card-image{
++        height:180px;
++    }
++
++    .collection-section .collection-card-image img,
++    .gift-categories-section .collection-card-image img{
++        width:100%;
++        height:100%;
++        object-fit:cover;
++        object-position:center;
++    }
++
++    .gallery-section .gallery-card img{
++        height:240px;
++        object-fit:contain;
++        object-position:center;
++        background:#f7f1ea;
++        border-radius:18px;
++    }
++
++    .events-section .experience-card .exp-image,
++    .most-gifted-section .experience-card .exp-image{
++        height:180px;
++    }
++
++    .events-section .experience-card .exp-image img,
++    .most-gifted-section .experience-card .exp-image img{
++        width:100%;
++        height:100%;
++        object-fit:cover;
++        object-position:center;
++    }
++
++    .location-grid{
++        display:grid;
++        grid-template-columns:1fr;
++        gap:20px;
++    }
++
++    .location-card{
++        min-height:auto !important;
++    }
++
++    .location-card .card-image-container{
++        height:220px !important;
++        overflow:hidden;
++    }
++
++    .location-card .card-image-container img{
++        width:100%;
++        height:100%;
++        object-fit:cover;
++        object-position:center;
++    }
++
++    .google-review-thumbs img{
++        width:104px;
++        height:104px;
++        object-fit:cover;
++    }
++
++    .book-now-btn,
++    .workshop-cta,
++    .exp-link{
++        width:100%;
++        padding:9px 12px !important;
++        font-size:.8rem !important;
++        border-radius:14px !important;
++    }
++
++    .hero-image-banner{
++        overflow:hidden !important;
++    }
++
++    .hero-image-banner img,
++    .banner-image{
++        width:100% !important;
++        height:100% !important;
++        object-fit:cover !important;
++        object-position:center !important;
++    }
++
++    .workshop-banner img,
++    .gift-banner img,
++    .shop-banner img{
++        width:100% !important;
++        height:100% !important;
++        object-fit:cover !important;
++        object-position:center !important;
++    }
++
++    footer,
++    .footer,
++    .site-footer{
++        overflow:visible !important;
++        height:auto !important;
++    }
++
++    .footer-container{
++        display:flex !important;
++        flex-direction:column !important;
++        gap:24px !important;
++    }
++
++    footer{
++        padding-bottom:90px !important;
++    }
++}
++
++@media (max-width:560px){
++    .featured-grid,
++    .workshop-grid,
++    .events-grid,
++    .experience-grid,
++    .collection-grid,
++    .gallery-grid{
++        grid-template-columns:1fr;
++    }
++
++    .featured-card-image,
++    .explore-card-image{
++        height:170px;
++    }
++
++    .workshops-section .workshop-card .collection-card-image,
++    .workshop-card > .collection-card-image,
++    .workshop-card > img{
++        height:210px;
++    }
++
++    .collection-section .collection-card-image,
++    .gift-categories-section .collection-card-image{
++        height:210px;
++    }
++
++    .gallery-section .gallery-card img{
++        height:260px;
++    }
++
++    .events-section .experience-card .exp-image,
++    .most-gifted-section .experience-card .exp-image{
++        height:210px;
++    }
++}
++
++/* ==========================================
++   MOBILE SLIDER ARROW FIX
++========================================== */
++
++@media (max-width:768px){
++
++    /* make slider relative */
++    .hero-slider,
++    .slider-container,
++    .banner-slider,
++    .hero-carousel{
++        position:relative !important;
++    }
++
++    /* center next/prev arrows */
++    .prev,
++    .next,
++    .slider-prev,
++    .slider-next,
++    .hero-prev,
++    .hero-next{
++
++        position:absolute !important;
++        top:50% !important;
++        transform:translateY(-50%) !important;
++        z-index:20 !important;
++
++        width:42px !important;
++        height:42px !important;
++
++        display:flex !important;
++        align-items:center !important;
++        justify-content:center !important;
++    }
++
++    .prev,
++    .slider-prev,
++    .hero-prev{
++        left:8px !important;
++    }
++
++    .next,
++    .slider-next,
++    .hero-next{
++        right:8px !important;
++    }
++}
++
++@media (max-width: 768px) {
++    .workshop-banner {
++        height: auto;
++        min-height: 220px;
++    }
++
++    .workshop-slider,
++    .workshop-slide {
++        height: 100%;
++    }
++
++    .workshop-slide img,
++    .banner-image {
++        width: 100%;
++        height: 100%;
++        object-fit: cover;
++    }
++}
++
++@media (max-width: 768px) {
++
++    .shop-slide img,
++    .gift-slide img {
++        width: 100%;
++        height: 100%;
++        object-fit: cover;
++        object-position: right center;
++    }
++
++    .workshop-slider,
++    .gift-slider,
++    .shop-slider {
++        height: auto;
++    }
++
++    .workshop-slide,
++    .gift-slide,
++    .shop-slide {
++        position: relative;
++    }
++}
++
++
++@media (max-width: 768px) {
++
++    .hero-section,
++    .workshop-hero,
++    .shop-hero {
++        padding: 18px 16px !important;
++        min-height: auto;
++    }
++
++    .hero-content,
++    .workshop-content {
++        padding: 22px 18px !important;
++        border-radius: 28px;
++    }
++
++    .hero-content h1,
++    .workshop-content h1 {
++        font-size: 1.9rem;
++        line-height: 1.2;
++        margin-bottom: 12px;
++    }
++
++    .hero-content p,
++    .workshop-content p {
++        margin-bottom: 10px;
++        line-height: 1.6;
++    }
++
++    .hero-buttons,
++    .workshop-buttons {
++        display: flex;
++        flex-direction: column;
++        gap: 12px;
++        align-items: center;
++        margin-top: 18px;
++    }
++
++    .hero-buttons a,
++    .workshop-buttons a,
++    .hero-buttons button,
++    .workshop-buttons button {
++        width: 78%;
++        max-width: 240px;
++        min-height: 48px;
++        border-radius: 999px;
++        font-size: 14px;
++    }
++}
++@media screen and (max-width: 768px) {
++
++    
++
++    /* hero container */
++    .hero-content {
++        max-width: 100% !important;
++        padding: 0 12px !important;
++    }
++
++    /* heading zoom out */
++    .hero-content h1,
++    .workshop-content h1 {
++        font-size: 1.9rem !important;
++        line-height: 1.2 !important;
++    }
++
++    /* paragraph */
++    .hero-content p,
++    .workshop-content p {
++        font-size: 14px !important;
++        line-height: 1.6 !important;
++    }
++    /* FIX EXTRA EMPTY SPACE IN WORKSHOP PAGE MOBILE */
++.hero {
++    min-height: auto !important;
++    height: auto !important;
++    padding: 40px 20px !important;
++}
++
++.workshop-banner {
++    margin-bottom: 0 !important;
++}
++
++.workshops-section {
++    margin-top: 0 !important;
++    padding-top: 20px !important;
++}
++
++    /* buttons smaller */
++    .hero-buttons,
++    .workshop-buttons {
++        transform: scale(0.9);
++        flex-wrap: wrap;
++        justify-content: center;
++    }
++
++    /* banner image zoom */
++    .hero-image-banner img,
++    .hero-section img {
++        object-fit: cover;
++        object-position: center;
++    }
++       .hero h1,
++    .banner h1 {
++        font-size: 2rem !important;
++        line-height: 1.2;
++    }
++
++    .hero p,
++    .banner p {
++        font-size: 0.95rem !important;
++    }
++    
++
++
++
++
++/* image should fill section */
++.hero img,
++.hero-section img,
++.workshop-banner img,
++.shop-banner img,
++.gift-banner img,
++.banner-image {
++    width: 100% !important;
++    height: 100% !important;
++    object-fit: cover !important;
++    object-position: center center !important;
++    transform: none !important;
++    display: block !important;
++}
++/* MOBILE BANNER FIX */
++
++}
++/* FIX LARGE EMPTY HERO SPACE - MOBILE ONLY */
++/* MOBILE FIX ONLY - HERO/BANNER HEIGHT */
++
++
++ /* ===== Mobile Banner Fix ===== */
++@media (max-width: 768px) {
++
++    .hero,
++    .hero-section,
++    .banner,
++    .home-banner {
++        min-height: auto !important;
++        height: auto;
++        overflow: hidden;
++    }
++
++    .workshop-banner,
++    .shop-banner,
++    .gift-banner {
++        height: clamp(220px, 42vw, 320px) !important;
++        min-height: 220px !important;
++        overflow: hidden;
++    }
++
++    .hero img,
++    .hero-section img,
++    .banner img,
++    .home-banner img {
++        width: 100% !important;
++        height: auto;
++        object-fit: cover !important;
++        object-position: center center !important;
++        transform: none !important;
++        display: block;
++    }
++
++    .workshop-banner img,
++    .shop-banner img,
++    .gift-banner img {
++        width: 100% !important;
++        height: 100% !important;
++        object-fit: cover !important;
++        object-position: center center !important;
++        transform: none !important;
++        display: block;
++    }
++}
++
++@media (max-width: 900px) {
++    body > .hero:not(.hero-image-banner) {
++        min-height: auto !important;
++        padding: 52px 18px 46px !important;
++        border-radius: 0 0 22px 22px;
++        background: linear-gradient(180deg, #fbf7f1 0%, #f7f1eb 100%);
++    }
++
++    body > .hero:not(.hero-image-banner) .hero-content {
++        max-width: 720px !important;
++        padding: 0 !important;
++        animation: none !important;
++        opacity: 1 !important;
++        width: 100% !important;
++    }
++
++    body > .hero:not(.hero-image-banner) .hero-text-container {
++        gap: 0.75rem;
++        width: 100%;
++        max-width: 100%;
++        min-width: 0;
++    }
++
++    body > .hero:not(.hero-image-banner) .hero-text-container > * {
++        width: min(100%, calc(100vw - 44px)) !important;
++        max-width: min(100%, calc(100vw - 44px)) !important;
++        min-width: 0 !important;
++    }
++
++    body > .hero:not(.hero-image-banner) .hero-accent,
++    body > .hero:not(.hero-image-banner) .hero-title,
++    body > .hero:not(.hero-image-banner) .hero-handwritten,
++    body > .hero:not(.hero-image-banner) .hero-subtitle {
++        color: #1E121C !important;
++        opacity: 1 !important;
++        text-shadow: none !important;
++        max-width: min(100%, calc(100vw - 40px)) !important;
++        white-space: normal !important;
++        overflow-wrap: anywhere;
++    }
++
++    body > .hero:not(.hero-image-banner) .hero-title {
++        max-width: min(100%, calc(100vw - 44px)) !important;
++        font-size: clamp(1.45rem, 5.2vw, 2.2rem) !important;
++        line-height: 1.18 !important;
++        overflow-wrap: anywhere;
++        word-break: normal;
++        text-wrap: balance;
++    }
++
++    body > .hero:not(.hero-image-banner) .hero-subtitle {
++        font-size: 0.98rem !important;
++        line-height: 1.65 !important;
++        max-width: min(100%, calc(100vw - 44px)) !important;
++        overflow-wrap: break-word;
++    }
++
++    .navbar--hero-transparent:has(+ .hero) {
++        background: rgba(247,244,240,0.88) !important;
++        backdrop-filter: blur(20px);
++        -webkit-backdrop-filter: blur(18px);
++        box-shadow: 0 10px 30px rgba(94, 77, 71, 0.08) !important;
++    }
++
++    .navbar--hero-transparent:has(+ .hero) .logo-text {
++        color: var(--deep-taupe) !important;
++        text-shadow: none !important;
++    }
++
++    .navbar--hero-transparent:has(+ .hero) .hamburger-menu span {
++        background-color: var(--deep-taupe) !important;
++    }
++}
++
++@media (max-width: 430px) {
++    body > .hero:not(.hero-image-banner) {
++        padding: 44px 18px 40px !important;
++    }
++
++    body > .hero:not(.hero-image-banner) .hero-title {
++        font-size: clamp(1.35rem, 7vw, 1.7rem) !important;
++        line-height: 1.22 !important;
++    }
++
++    body > .hero:not(.hero-image-banner) .hero-handwritten,
++    body > .hero:not(.hero-image-banner) .hero-subtitle {
++        font-size: 0.92rem !important;
++        line-height: 1.55 !important;
++    }
++
++    .navbar,
++    .navbar--hero-transparent {
++        background: rgba(247,244,240,0.92) !important;
++        backdrop-filter: blur(18px);
++        -webkit-backdrop-filter: blur(18px);
++    }
++
++    .navbar .logo-text,
++    .navbar--hero-transparent .logo-text {
++        color: var(--deep-taupe) !important;
++        text-shadow: none !important;
++    }
++
++    .navbar .hamburger-menu span,
++    .navbar--hero-transparent .hamburger-menu span {
++        background-color: var(--deep-taupe) !important;
++    }
++}
