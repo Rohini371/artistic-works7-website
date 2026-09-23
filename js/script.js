@@ -24,10 +24,11 @@ const dropdownItem = dropdownToggle ? dropdownToggle.closest('.nav-dropdown') : 
 if (dropdownToggle && dropdownItem) {
     dropdownToggle.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
+
         const isOpen = dropdownItem.classList.toggle('open');
         dropdownToggle.setAttribute('aria-expanded', String(isOpen));
     });
-
     document.addEventListener('click', (e) => {
         if (!dropdownItem.contains(e.target) && !e.target.closest('.nav-dropdown-toggle')) {
             dropdownItem.classList.remove('open');
@@ -36,9 +37,12 @@ if (dropdownToggle && dropdownItem) {
     });
 }
 
-// Close menu when link is clicked
+// Close menu when normal link is clicked
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+        // Do not close mobile menu for Categories dropdown items/toggle
+        if (link.closest('.nav-dropdown')) return;
+
         hamburgerMenu.classList.remove('active');
         navMenu.classList.remove('active');
     });
@@ -94,22 +98,45 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Categories subpages
-        const isGallery = currentBase === 'gallery';
-        const isReviews = currentBase === 'reviews';
-        const isFaq = currentBase === 'faq';
+const isWedding = currentBase === 'wedding-live-painting';
+const isBirthday = currentBase === 'birthday-events';
+const isCorporate = currentBase === 'corporate-events';
+const isGallery = currentBase === 'gallery';
+const isReviews = currentBase === 'reviews';
+const isFaq = currentBase === 'faq';
 
-        if (isGallery || isReviews || isFaq) {
-            // Keep Categories active, never Home
-            setTopActive(categoriesToggle);
+if (isWedding || isBirthday || isCorporate || isGallery || isReviews || isFaq) {
+    // Keep Categories active
+    setTopActive(categoriesToggle);
 
-            if (isGallery) setDropdownActive(dropdownItemGallery);
-            else if (isReviews) setDropdownActive(dropdownItemReviews);
-            else if (isFaq) setDropdownActive(dropdownItemFaq);
+    if (isWedding) {
+        const item = document.querySelector('.nav-dropdown-panel a[href="wedding-live-painting.html"]');
+        setDropdownActive(item);
+    } else if (isBirthday) {
+        const item = document.querySelector('.nav-dropdown-panel a[href="birthday-events.html"]');
+        setDropdownActive(item);
+    } else if (isCorporate) {
+        const item = document.querySelector('.nav-dropdown-panel a[href="corporate-events.html"]');
+        setDropdownActive(item);
+    } else if (isGallery) {
+        setDropdownActive(dropdownItemGallery);
+    } else if (isReviews) {
+        setDropdownActive(dropdownItemReviews);
+    } else if (isFaq) {
+        setDropdownActive(dropdownItemFaq);
+    }
 
-            // Explicitly ensure no home active remains
-            if (homeLink) homeLink.classList.remove('active');
-            return;
-        }
+    // Remove active state from normal top navigation
+    if (homeLink) homeLink.classList.remove('active');
+    if (workshopsLink) workshopsLink.classList.remove('active');
+    if (shopLink) shopLink.classList.remove('active');
+    if (giftLink) giftLink.classList.remove('active');
+    if (experiencesLink) experiencesLink.classList.remove('active');
+    if (aboutLink) aboutLink.classList.remove('active');
+    if (contactLink) contactLink.classList.remove('active');
+
+    return;
+}
 
         // Home page (index.html)
         if (currentBase === 'index') {
@@ -183,11 +210,17 @@ const updateNavbarScrollState = () => {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
     if (isMobileViewport()) {
-        navbar.classList.remove('navbar--hero-transparent');
+    navbar.classList.remove('navbar--hero-transparent');
+
+    if (scrollTop > 50) {
         navbar.classList.add('scrolled');
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        return;
+    } else {
+        navbar.classList.remove('scrolled');
     }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    return;
+}
 
     const isHeroTransparentMode = navbar?.classList.contains('navbar--hero-transparent');
 
@@ -269,7 +302,7 @@ const getActiveFilterText = (group) => {
 };
 
 const getCardContext = (element) => {
-    const card = element.closest('article.workshop-card, article.collection-card, article.gallery-card, .experience-card, .collection-card, .workshop-card, .gallery-card');
+    const card = element.closest('article.workshop-card, article.collection-card, .category-grid article.gallery-card, .experience-card, .collection-card, .workshop-card, .gallery-card');
     if (!card) return {};
     const title = card.querySelector('h3, h2')?.textContent.trim() || '';
     const categoryTag = card.querySelector('.card-tag, .gallery-tag')?.textContent.trim();
@@ -517,11 +550,11 @@ const setupClickableCollectionAndGalleryCards = () => {
         await saveLeadAndOpenWhatsApp(payload, message);
     };
 
-    document.querySelectorAll('article.collection-card, article.gallery-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            handleCardClick(card, e);
-        });
+document.querySelectorAll('article.gallery-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+        handleCardClick(card, e);
     });
+});
 };
 
 // ================================
@@ -885,40 +918,12 @@ function initCategoryFilter() {
     updateWorkshopExploreLocationButton();
 }
 
-// Initialize smart WhatsApp link handler - attach listeners to ALL WhatsApp links
-const initSmartWhatsAppLinks = () => {
-    // Find and attach listeners to all WhatsApp links
-    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-        link.addEventListener('click', async (e) => {
-            if (link.hasAttribute('data-direct-whatsapp')) return;
-            e.preventDefault();
-            const pageContext = extractPageContextFromElement(link);
-            const message = buildSmartMessage(pageContext);
-            const payload = {
-                name: '',
-                phone: '',
-                email: '',
-                interestType: inferInterestTypeFromContext(pageContext),
-                category: pageContext.category,
-                selection: pageContext.selection,
-                location: pageContext.location,
-                price: pageContext.budget || pageContext.price || '',
-                message: pageContext.note || 'WhatsApp enquiry from website',
-                page: getCurrentPageName()
-            };
-            await saveLeadAndOpenWhatsApp(payload, message);
-        });
-    });
-};
 
-// Initialize filter and WhatsApp link handler when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-        initSmartWhatsAppLinks();
         initCategoryFilter();
     });
 } else {
-    initSmartWhatsAppLinks();
     initCategoryFilter();
 }
 
@@ -1031,6 +1036,7 @@ const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach(item => {
     const button = item.querySelector('.faq-question');
     const answer = item.querySelector('.faq-answer');
+    if (!button || !answer) return;
     button.addEventListener('click', () => {
         const isOpen = item.classList.toggle('expanded');
         button.setAttribute('aria-expanded', isOpen);
@@ -1126,14 +1132,16 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn?.addEventListener('click', nextSlide);
     prevBtn?.addEventListener('click', prevSlide);
 
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            current = Number(dot.dataset.slide);
-            updateSlider(current);
-        });
+dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        current = Number(dot.dataset.slide);
+        updateSlider(current);
     });
+});
 
-    setInterval(nextSlide, 4000);
+updateSlider(0);
+
+setInterval(nextSlide, 4000);
 });
 
 function initSlider(config) {
@@ -1178,14 +1186,16 @@ function initSlider(config) {
     nextBtn?.addEventListener('click', nextSlide);
     prevBtn?.addEventListener('click', prevSlide);
 
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            current = Number(dot.dataset.slide);
-            updateSlider(current);
-        });
+dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        current = Number(dot.dataset.slide);
+        updateSlider(current);
     });
+});
 
-    setInterval(nextSlide, 4000);
+updateSlider(0);
+
+setInterval(nextSlide, 4000);
 }
 
 /* workshop */
@@ -1656,4 +1666,282 @@ document.addEventListener('DOMContentLoaded', () => {
         'scroll',
         toggleFloatingButton
     );
+});
+
+/* =========================================================
+   GLOBAL BACK TO TOP BAR
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const footer = document.querySelector(".site-footer");
+
+    if (!footer) return;
+
+    /* Avoid creating it twice */
+    if (document.querySelector(".back-to-top-bar")) return;
+
+    const backToTop = document.createElement("button");
+
+    backToTop.type = "button";
+    backToTop.className = "back-to-top-bar";
+    backToTop.textContent = "Back to top";
+    backToTop.setAttribute("aria-label", "Back to top");
+
+    footer.parentNode.insertBefore(backToTop, footer);
+
+    backToTop.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+});
+
+/* ==========================================
+   HIDE FLOATING BUTTONS WHEN FOOTER ENTERS
+   ========================================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const registerBtn = document.querySelector('.floating-request-btn');
+    const whatsappBtn = document.querySelector('#floating-whatsapp');
+    const footer = document.querySelector('.site-footer');
+
+    if (!footer) return;
+
+    const floatingButtons = [registerBtn, whatsappBtn].filter(Boolean);
+
+    const footerObserver = new IntersectionObserver(
+        (entries) => {
+            const footerVisible = entries.some(entry => entry.isIntersecting);
+
+            floatingButtons.forEach(button => {
+                button.classList.toggle('footer-visible', footerVisible);
+            });
+        },
+        {
+            threshold: 0.01
+        }
+    );
+
+    footerObserver.observe(footer);
+});
+
+// =========================================================
+// GALLERY IMAGE + VIDEO LIGHTBOX
+// =========================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const mediaCards =
+        document.querySelectorAll('.gallery-media-card');
+
+    if (!mediaCards.length) return;
+
+
+    // Create popup
+    const modal = document.createElement('div');
+
+    modal.className = 'gallery-media-modal';
+
+    modal.innerHTML = `
+        <div class="gallery-media-modal-box">
+
+            <button
+                type="button"
+                class="gallery-media-modal-close"
+                aria-label="Close gallery">
+                &times;
+            </button>
+
+            <img
+                class="gallery-modal-image"
+                src=""
+                alt=""
+                style="display:none;">
+
+            <video
+                class="gallery-modal-video"
+                controls
+                playsinline
+                style="display:none;">
+            </video>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+
+    const modalImage =
+        modal.querySelector('.gallery-modal-image');
+
+    const modalVideo =
+        modal.querySelector('.gallery-modal-video');
+
+    const closeButton =
+        modal.querySelector('.gallery-media-modal-close');
+
+
+    // Open image / video
+    mediaCards.forEach(card => {
+
+        card.addEventListener('click', () => {
+
+            const type =
+                card.dataset.mediaType;
+
+            const source =
+                card.dataset.mediaSrc;
+
+            if (!source) return;
+
+
+            // IMAGE
+            if (type === 'image') {
+
+                modalVideo.pause();
+                modalVideo.removeAttribute('src');
+                modalVideo.load();
+
+                modalVideo.style.display = 'none';
+
+                modalImage.src = source;
+
+                modalImage.alt =
+                    card.querySelector('img')?.alt ||
+                    'Gallery artwork';
+
+                modalImage.style.display = 'block';
+            }
+
+
+            // VIDEO
+            if (type === 'video') {
+
+                modalImage.style.display = 'none';
+                modalImage.removeAttribute('src');
+
+                modalVideo.src = source;
+                modalVideo.style.display = 'block';
+
+                modalVideo.currentTime = 0;
+            }
+
+
+            modal.classList.add('is-open');
+
+            document.body.style.overflow = 'hidden';
+
+
+            // Play video automatically
+            if (type === 'video') {
+                modalVideo.play().catch(() => {});
+            }
+
+        });
+
+    });
+
+
+    // Close popup
+    function closeGalleryModal() {
+
+        modal.classList.remove('is-open');
+
+        modalVideo.pause();
+
+        modalVideo.removeAttribute('src');
+
+        modalVideo.load();
+
+        modalImage.removeAttribute('src');
+
+        document.body.style.overflow = '';
+    }
+
+
+    closeButton.addEventListener(
+        'click',
+        closeGalleryModal
+    );
+
+
+    // Click outside popup
+    modal.addEventListener('click', (event) => {
+
+        if (event.target === modal) {
+            closeGalleryModal();
+        }
+
+    });
+
+
+    // ESC key
+    document.addEventListener('keydown', (event) => {
+
+        if (
+            event.key === 'Escape' &&
+            modal.classList.contains('is-open')
+        ) {
+            closeGalleryModal();
+        }
+
+    });
+
+});
+
+/* =========================================
+   SALE ARTWORK — OPEN POPUP ONLY
+   ========================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const saleCard = document.querySelector('.sale-art-card');
+    const saleModal = document.getElementById('saleArtModal');
+
+    if (!saleCard || !saleModal) return;
+
+    const closeButton = saleModal.querySelector('.sale-art-close');
+
+    function openSaleArtwork() {
+        saleModal.classList.add('is-open');
+        saleModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('sale-modal-open');
+    }
+
+    function closeSaleArtwork() {
+        saleModal.classList.remove('is-open');
+        saleModal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('sale-modal-open');
+    }
+
+    saleCard.addEventListener('click', function (event) {
+
+        // Let the enquiry button behave normally
+        if (event.target.closest('a, button')) {
+            return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        openSaleArtwork();
+    });
+
+    closeButton.addEventListener('click', closeSaleArtwork);
+
+    saleModal.addEventListener('click', function (event) {
+        if (event.target === saleModal) {
+            closeSaleArtwork();
+        }
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (
+            event.key === 'Escape' &&
+            saleModal.classList.contains('is-open')
+        ) {
+            closeSaleArtwork();
+        }
+    });
+
 });
