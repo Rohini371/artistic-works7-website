@@ -1,0 +1,6 @@
+.codex-screens/
+.venv/
+.vscode/
+.qodo/
+__pycache__/
+*.pyc
